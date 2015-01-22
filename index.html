@@ -113,49 +113,64 @@
     </div>
   </div>
 
+  <div id="lead1">
+    <div class="wrapper columns">
+      <div class="column lead1-text" style="width: 210px; padding-top: 50px;">
+        <img src="images/iphone.png" style="margin-top:-80px;">
+      </div>
+      <div class="column lead1-text" style="margin-left: 30px; width: 518px; padding-top: 35px; text-align:center;">
+        <div class="big-letters">
+          <span style="color: red">Получи iPhone 6*</span><br>за покупку дверей<br>до 28 февраля!
+        </div>
+        <div class="little-letters">*пожалуйста, узнавайте все подробности у менеджеров</div>
+      </div>
+      <div class="column lead1-form" style="height:361px; margin-top:2px; width:242px; background-color:#858585; text-align: center; color: white; padding-top:0px;">
+        <div style="font-size: 18px; margin-top: 80px; margin-bottom: 15px; font-weight: 400;">Отправить заявку<br>на участие в акции<br></div>
+        <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['catalog']"></input>
+        <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['catalog']"></input>
+        <input type="button" id="main-name" class="button button-red" value="ХОЧУ УЧАСТВОВАТЬ!" style="margin-top: 15px;" ng-click="sendData(this,'Запрос каталога','catalog')"></input>
+      </div>
+    </div>
+  </div>
+
   <div id="advances">
     <div class="wrapper columns">
       <div class="title">ПРЕИМУЩЕСТВА ДВЕРЕЙ SINERGY</div>
-      <div class="column" class="advances-list" style="margin-left: 25px; width: 310px">
-        <div class="advance" style="height:175px;">
-          <div class="advance-icon" style="background-position: 0px -40px;height:35px;"></div>
-          <div class="advance-title">Открывание в любую сторону</div>
-          <div class="advance-subtitle">Слева на право и справа на лево. Определяется в момент установки.</div>
-        </div>
-        <div class="advance" style="height:220px;">
-          <div class="advance-icon" style="background-position: -40px -40px;height: 48px;"></div>
-          <div class="advance-title">Многослойный материал CPL (пластик низкого давления)</div>
-          <div class="advance-subtitle">Устойчив к царапинам, влаге и высоким температурам. Подходит для ванных комнат!</div>
+      <div class="column" class="advances-list" style="margin-left: 0px; width: 335px">
+        <div class="advance">
+          <div class="advance-icon" style="background-position: 0px 0px;"></div>
+          <div class="advance-title">Полотно царговой конструкции</div>
+          <div class="advance-subtitle">Придаёт двери дополнительную прочность,<br>исключая деформацию дверного полотна.</div>
         </div>
         <div class="advance">
-          <div class="advance-icon" style="background-position: -80px -40px;height:44px;"></div>
-          <div class="advance-title">Замок и петли установлены в заводских условиях</div>
-          <div class="advance-subtitle">– существенно влияет на качество установки<br>– снижает стоимость установки</div>
+          <div class="advance-icon" style="background-position: 0px -75px;"></div>
+          <div class="advance-title">Тепло и барьер для запахов</div>
+          <div class="advance-subtitle">Уплотнитель по всему периметру дверной<br>коробки сохраняет тепло и препятствует<br>проникновению посторонних запахов.</div>
+        </div>
+        <div class="advance">
+          <div class="advance-icon" style="background-position: 0px -150px;"></div>
+          <div class="advance-title">ПВХ-покрытие</div>
+          <div class="advance-subtitle">Не выгорает под прямыми лучами, устойчиво к<br>царапинам и влаге. Подходит для ванных комнат.</div>
         </div>
       </div>
       <div class="column advances-picture">
         <img src="images/advances-door.jpg"/>
       </div>
-      <div class="column" class="advances-list" style="margin-left:80px; width:265px;">
-        <div class="advance" style="height: 144px;">
-          <div class="advance-icon" style="background-position: 0px 0px;"></div>
-          <div class="advance-title">Тепло и тихо!</div>
-          <div class="advance-subtitle">Утеплитель - по всему периметру коробки.</div>
+      <div class="column" class="advances-list" style="margin-left:30px; width:315px;">
+        <div class="advance">
+          <div class="advance-icon" style="background-position: -105px 0px;"></div>
+          <div class="advance-title">Открывание в любую сторону</div>
+          <div class="advance-subtitle">Сторона открывания определяется в момент<br>установки.</div>
         </div>
-        <div class="advance" style="height: 144px;">
-          <div class="advance-icon" style="background-position: -40px 0px;height: 36px;"></div>
-          <div class="advance-title">3х-сторонний фальц</div>
-          <div class="advance-subtitle">Закрывает все возможные зазоры между коробкой и дверью.</div>
+        <div class="advance">
+          <div class="advance-icon" style="background-position: -105px -75px;"></div>
+          <div class="advance-title">Эстетичный вид</div>
+          <div class="advance-subtitle">Коробка телескоп позволяет оформлять дверной<br>проем без применения дополнительных<br>крепежей гвоздей и шурупов.</div>
         </div>
-        <div class="advance" style="height: 144px;">
-          <div class="advance-icon" style="background-position: -80px 0px;height: 38px;"></div>
-          <div class="advance-title">Ударопрочная кромка</div>
-          <div class="advance-subtitle">Надежно защищает торцы. Прочное покрытие лаками UV отвержения.</div>
-        </div>
-        <div class="advance" style="height: 144px;">
-          <div class="advance-icon" style="background-position: -120px 0px;height: 38px;"></div>
-          <div class="advance-title">Экологичность материала</div>
-          <div class="advance-subtitle">Нет запаха и токсичных выделений. Безопасны для вашего дома.</div>
+        <div class="advance">
+          <div class="advance-icon" style="background-position: -105px -150px;"></div>
+          <div class="advance-title">Бесшумная эксплуатация</div>
+          <div class="advance-subtitle">Специальное крепление стекла обеспечивает<br>отсутствие дребезжания при эксплуатации двери.</div>
         </div>
       </div>
     </div>
@@ -185,22 +200,6 @@
         <div class="column" style="width: 340px; text-align: center;">
           ЛЕВОЕ ОТКРЫВАНИЕ
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="lead-old">
-    <div class="wrapper columns">
-      <div class="column lead-old-text" style="width: 210px; padding-top: 50px;">
-      </div>
-      <div class="column lead1-text" style="width: 570px; padding-top: 35px; text-align:center;">
-        ЗАКАЖИТЕ БЕСПЛАТНЫЙ<BR>КАТАЛОГ ПО ПОЧТЕ<br><br>ИЛИ
-      </div>
-      <div class="column lead-old-form">
-        <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['catalog']"></input>
-        <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['catalog']"></input>
-        <input type="text" class="form-input form-mail" id="main-mail" placeholder="Ваш e-mail" ng-model="emails['catalog']"></input>
-        <input type="button" id="main-name" class="button button-yellow" value="ЗАКАЗАТЬ КАТАЛОГ" ng-click="sendData(this,'Запрос каталога','catalog')"></input>
       </div>
     </div>
   </div>
@@ -237,47 +236,20 @@
     </div>
   </div>
 
-  <div id="lead1-anchor" style="position:relative; margin-top:-35px; height:35px"></div>
-  <!-- <div id="discount">
-    <div class="wrapper">
-      <div class="discount-title">ТОЛЬКО В ДЕКАБРЕ</div>
-      <div class="discount-subtitle">СКИДКА 2015 руб. С КАЖДОГО КОМПЛЕКТА ДВЕРЕЙ*</div>
-      <div class="columns">
-        <div class="column for-you">
-          Для вас мы:
-          <ul>
-            <li>Организуем доставку</li>
-            <li>Выполним установку</li>
-            <li>Произведем сборку</li>
-          </ul>
-        </div>
-        <div class="column" style="float: right;margin-top:25px;margin-right: 75px;">
-          <div class="cloudy discount-form">
-            Оставить заявку на участие в акции
-            <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['discount']"></input>
-            <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['discount']"></input>
-            <input type="button" id="main-name" class="button button-yellow" value="УЧАСТВОВАТЬ В АКЦИИ!" ng-click="sendData(this,'акция','discount')"></input>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <div id="lead1">
+  <!-- <div id="discount-anchor" style="position:relative; margin-top:-35px; height:35px"></div> -->
+  <div id="lead-old">
     <div class="wrapper columns">
-      <div class="column lead1-text" style="width: 210px; padding-top: 50px;">
-        <img src="images/iphone.png" style="margin-top:-80px;">
+      <div class="column lead-old-text" style="width: 220px;">
+        <img src="images/big-catalog.png" style="margin-top: -35px;"/>
       </div>
-      <div class="column lead1-text" style="margin-left: 30px; width: 518px; padding-top: 35px; text-align:center;">
-        <div class="big-letters">
-          <span style="color: red">Получи iPhone 6*</span><br>за покупку дверей<br>до 28 февраля!
-        </div>
-        <div class="little-letters">*пожалуйста, узнавайте все подробности у менеджеров</div>
+      <div class="column lead-old-text" style="width: 490px; padding-top: 55px; text-align:center; font-weight:700; color: black;">
+        ЗАКАЖИТЕ ПОЛНЫЙ<BR>КАТАЛОГ ПО ПОЧТЕ
       </div>
-      <div class="column lead1-form" style="height:361px; margin-top:2px; width:242px; background-color:#858585; text-align: center; color: white; padding-top:0px;">
-        <div style="font-size: 18px; margin-top: 80px; margin-bottom: 15px; font-weight: 400;">Отправить заявку<br>на участие в акции<br></div>
+      <div class="column lead-old-form">
         <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['catalog']"></input>
         <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['catalog']"></input>
-        <input type="button" id="main-name" class="button button-red" value="ХОЧУ УЧАСТВОВАТЬ!" style="margin-top: 15px;" ng-click="sendData(this,'Запрос каталога','catalog')"></input>
+        <input type="text" class="form-input form-mail" id="main-mail" placeholder="Ваш e-mail" ng-model="emails['catalog']"></input>
+        <input type="button" id="main-name" class="button button-yellow" value="ЗАКАЗАТЬ КАТАЛОГ!" ng-click="sendData(this,'Запрос каталога','catalog')"></input>
       </div>
     </div>
   </div>
@@ -289,24 +261,18 @@
       <div class="review" ng-repeat="review in reviews">
         <div class="review-photo">
           <div class="review-face" ng-style="{'background-position': review.pic.position}"></div>
-          <div ng-bind-html="showHtml(review.pic.descr)" class="comment"></div>
         </div>
-        <div class="review-text" ng-bind-html="showHtml(review.text)"></div>
-        <div class="review-ad">
-          <div class="ad-pics">
-            <img ng-src="images/интерьеры/{{review.ad.cover_pic}}" class="cover-pic" />
-            <div class="small-pics">
-              <img ng-src="images/интерьеры/{{small_pic}}" ng-repeat="small_pic in review.ad.pics" ng-click="review.ad.cover_pic = small_pic"/>
-            </div>
-          </div>
-          <div class="ad-text">
-            <div ng-bind-html="showHtml(review.ad.text)" class="review-ad-text"></div>
-            <input type="button" class="button button-yellow" value="Хочу так же!" ng-click="openLeadPopup('Запрос интерьера, как у '+review.pic.descr)">
+        <div class="review-text">
+          <div class="vertical-center">
+            <div class="review-title" ng-bind-html="showHtml(review.pic.descr)"></div>
+            <div class="review-review" ng-bind-html="showHtml(review.text)"></div>
           </div>
         </div>
       </div>
-
+      <div class="clear" style="clear: both;"></div>
+      <div class="title" style="font-size: 20px; margin-top: 30px; margin-bottom: 25px;">Если вы хотите оставить свой отзыв, звоните нам по телефону <a href="tel: +73432882684" style="color: black !important;">+7 (343) 288-26-84</a></div>
     </div>
+
     <div class="clear" style="clear: both;"></div>
   </div>
 

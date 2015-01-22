@@ -353,7 +353,7 @@ input[type='button'] {
 #lead1 {
   height: 365px;
   background-color: black;
-  margin-bottom: 20px;
+  margin-bottom: 90px;
 }
 
 .lead1-text {
@@ -385,18 +385,21 @@ input[type='button'] {
 
 #lead-old {
   height: 180px;
-  background-color: #453122;
+  background: url(images/catalog-background.jpg);
+  margin-top:40px;
+  margin-bottom: 40px;
 }
 
-.lead1-old-text {
+.lead-old-text {
   height: 115px;
   display: table-cell;
   vertical-align: middle;
   font-size: 26px;
-  color: #fff;
+  background: url(images/catalog-back2.png) no-repeat;
+  background-position: 38px 43px;
 }
 
-.lead1-old-form {
+.lead-old-form {
   padding-top:4px;
 }
 
@@ -423,15 +426,19 @@ input[type='button'] {
 }
 
 .advance-title {
-  width: 260px;
+  width: 290px;
   font-size: 18px;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 0px;
+}
+
+.advance {
+  height:200px;
 }
 
 .advance-subtitle {
-  width: 250px;
-  font-size: 14px;
+  width: 315px;
+  font-size: 13px;
   font-weight: 400;
   color: #616161;
   margin-bottom: 20px;
@@ -439,9 +446,11 @@ input[type='button'] {
 }
 
 .advance-icon {
-  width: 40px;
-  height: 40px;
+  width: 105px;
+  height: 78px;
   background: url("images/advances-icons.png") no-repeat;
+  margin-bottom: 5px;
+  margin-left: 80px;
 }
 
 #opening-types {
@@ -645,10 +654,48 @@ input[type='button'] {
 }
 
 .review-text {
-  width: 295px;
+  width: 730px;
   float: left;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top:25px;
+  height: 140px;
+  background-color: #ffcdae;
+  display: table;
+}
+
+.review:nth-child(2n) .review-text {
+  -webkit-border-top-right-radius: 20px;
+  -webkit-border-bottom-right-radius: 20px;
+  -moz-border-radius-topright: 20px;
+  -moz-border-radius-bottomright: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.review:nth-child(2n-1) .review-text {
+  -webkit-border-top-left-radius: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  -moz-border-radius-topleft: 20px;
+  -moz-border-radius-bottomleft: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.vertical-center {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.review-review {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.review-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
 }
 
 .review-ad {
