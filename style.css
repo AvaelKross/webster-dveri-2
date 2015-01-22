@@ -411,6 +411,7 @@ input[type='button'] {
 
 #advances .column {
   width: 320px;
+  min-height: 1px;
 }
 
 #advances .title {
@@ -434,6 +435,7 @@ input[type='button'] {
 
 .advance {
   height:200px;
+  display: none;
 }
 
 .advance-subtitle {

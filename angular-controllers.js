@@ -14,15 +14,28 @@ dveri.config(function($routeProvider, $locationProvider) {
 dveri.directive("scroll", function ($window) {
   return function(scope, element, attrs) {
     angular.element($window).bind("scroll", function() {
-       if (this.pageYOffset >= 75) {
-         scope.fixedMenu = true;
-       } else {
-         scope.fixedMenu = false;
-       }
+      if (this.pageYOffset >= 75) {
+        scope.fixedMenu = true;
+      } else {
+        scope.fixedMenu = false;
+      }
       scope.$apply();
     });
   };
 });
+
+dveri.directive("fadein", function($window) {
+  return function(scope, element, attrs) {
+    angular.element($window).bind("scroll", function() {
+      if (this.pageYOffset >= 1200) {
+        setTimeout(function () {
+          $(element).fadeIn(700);
+        }, parseInt(attrs["fadein"]));
+      }
+      scope.$apply();
+    });
+  };
+})
 
 dveri.directive('inputMask', ['$document', function($document) {
   return {
