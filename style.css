@@ -479,28 +479,24 @@ input[type='button'] {
 
 }
 
-.select-type {
-  font-size: 17px;
-  margin: 15px auto;
-  width:890px;
-}
-
-.select-type li {
-  height: 42px;
-  width: 185px;
-  background-color: #d2d2d2;
-  padding: 5px 15px;
-  padding-top: 8px;
-  border-radius: 3px;
-  margin-right: 5px;
-  text-align: center;
-  cursor: pointer;
-}
-
 .door {
   margin-bottom: 35px;
   margin-left:11px;
   margin-right:11px;
+  margin-top:28px;
+  transition: all .2s ease-in-out;
+}
+
+.door:hover {
+  margin-top: 14px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.door:hover img {
+  height: 345px;
+  width: 136px;
+  margin-bottom: -14px;
 }
 
 .door:last-child {
@@ -508,7 +504,11 @@ input[type='button'] {
 }
 
 .door:last-child.selected {
-  margin-right: -11px;
+  margin-right: -11px !important;
+}
+
+.door:last-child.door:hover {
+  margin-right: -6px;
 }
 
 .door:first-child {
@@ -516,20 +516,15 @@ input[type='button'] {
 }
 
 .door:first-child.selected {
-  margin-left: -11px;
+  margin-left: -11px !important;
 }
 
-#catalog .info {
-  font-size: 14px;
-  width: 100%;
-  height: 400px;
-}
-
-#catalog .columns {
-  float: left;
+.door:first-child.door:hover {
+  margin-left: -6px;
 }
 
 .door img {
+  transition: all .2s ease-in-out;
   height: 317px;
   width: 124px;
   cursor: pointer;
@@ -537,14 +532,15 @@ input[type='button'] {
 }
 
 .door.selected {
-  margin-right:0px;
-  margin-left:0px;
+  margin-right:0px !important;
+  margin-left:0px !important;
+  margin-top:0px !important;
 }
 
 .door.selected img {
-  width: 146px;
-  height: 373px;
-  margin-bottom: -28px;
+  width: 146px !important;
+  height: 373px !important;
+  margin-bottom: -28px !important;
 }
 
 .door input {
@@ -559,6 +555,16 @@ input[type='button'] {
 .door .buttons {
   margin-top:15px;
   width: 100%;
+  float: left;
+}
+
+#catalog .info {
+  font-size: 14px;
+  width: 100%;
+  height: 400px;
+}
+
+#catalog .columns {
   float: left;
 }
 
