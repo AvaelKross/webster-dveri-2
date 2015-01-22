@@ -208,7 +208,7 @@
 
   <div id="catalog-anchor" style="position:relative; margin-top:-35px; height:35px"></div>
   <div id="catalog">
-    <div class="title" style="height: 40px; padding-top:13px;background-color:#ebb61d; width: 100%">Выберите дверь из нашего каталога</div>
+    <div class="title" style="height: 40px; padding-top:13px;background-color:#ebb61d; width: 100%">Популярные двери 2015 года</div>
     <div class="wrapper" style="width: 1022px;">
       <ul class="doors">
         <li class="door" ng-repeat="door in doors" ng-class="{selected: door==selectedDoor }">
@@ -230,7 +230,7 @@
             <span class="info-param">Размеры полотна:</span> <span ng-bind-html="showHtml(selectedDoor.sizes)"></span><br>
             <br>
             <div class="prices">Цена за полотно: {{selectedDoor.polotno_price}}.<br>
-              Цена за комплект с монтажом: {{selectedDoor.polotno_and_montage_price}}.
+              Цена за комплект: {{selectedDoor.polotno_and_montage_price}}.
             </div>
             <div class="buttons">
               <input type="button" class="button" value="ХОЧУ УЗНАТЬ БОЛЬШЕ!" ng-click="openInOneClick()">
