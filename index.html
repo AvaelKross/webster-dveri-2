@@ -113,6 +113,7 @@
     </div>
   </div>
 
+  <div id="lead1-anchor" style="position:relative; margin-top:-35px; height:35px"></div>
   <div id="lead1">
     <div class="wrapper columns">
       <div class="column lead1-text" style="width: 210px; padding-top: 50px;">
@@ -126,9 +127,9 @@
       </div>
       <div class="column lead1-form" style="height:361px; margin-top:2px; width:242px; background-color:#858585; text-align: center; color: white; padding-top:0px;">
         <div style="font-size: 18px; margin-top: 80px; margin-bottom: 15px; font-weight: 400;">Отправить заявку<br>на участие в акции<br></div>
-        <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['catalog']"></input>
-        <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['catalog']"></input>
-        <input type="button" id="main-name" class="button button-red" value="ХОЧУ УЧАСТВОВАТЬ!" style="margin-top: 15px;" ng-click="sendData(this,'Запрос каталога','catalog')"></input>
+        <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['event']"></input>
+        <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['event']"></input>
+        <input type="button" id="main-name" class="button button-red" value="ХОЧУ УЧАСТВОВАТЬ!" style="margin-top: 15px;" ng-click="sendData(this,'Участие в акции (iPhone6)','event')"></input>
       </div>
     </div>
   </div>
@@ -207,37 +208,50 @@
 
   <div id="catalog-anchor" style="position:relative; margin-top:-35px; height:35px"></div>
   <div id="catalog">
+    <div class="title" style="height: 40px; padding-top:13px;background-color:#ebb61d; width: 100%">Выберите дверь из нашего каталога</div>
     <div class="wrapper">
-      <div class="title">Выберите самую популярную</div>
-      <ul class="select-type">
-        <li ng-repeat="type in types" ng-click="changeType(type.key)" ng-bind-html="showHtml(type.title)"></li>
-      </ul>
       <ul class="doors">
-        <li class="door" ng-repeat="door in doors[selectedType]">
-          <div style="background: url('images/mini-dveri.jpg') no-repeat;" ng-style="{'background-position': door.position, 'cursor':'pointer'}" class="mini-door-img" ng-click="openDoorPopup(door)"></div>
-          <div class="info">
-            {{door.type}}<br>
-            {{door.brand}}<br>
-            {{door.model}}<br>
-            <br>
-            <span ng-if="door.color">Цвет: {{colors[door.color].name}}<br></span>
-            <span ng-if="door.cover">Покрытие: {{door.cover}}<br></span>
-            <br>
-            Размеры полотна: {{door.sizes_width}}<br>
-            <br>
-            <span ng-if="door.price_pol">Цена полотна: {{door.price_pol}} р.<br></span>
-            Цена с комплектом: {{door.price_set}} р.
-          </div>
-          <div class="buttons">
-            <input type="button" class="button button-orange" value="Купить в один клик" ng-click="openInOneClick(door)">
-            <input type="button" class="button button-grey" value="Подробнее" ng-click="openDoorPopup(door)">
-          </div>
+        <li class="door" ng-repeat="door in doors" ng-class="{selected: door==selectedDoor }">
+          <img ng-src="images/doors/{{door.selected_color}}" ng-click="$parent.selectedDoor = door">
         </li>
       </ul>
+      <div class="info" ng-model="selectedDoor">
+        <div class="columns">
+          <div class="column" style="width: 335px; padding-right:10px;">
+            <div class="info-title">{{selectedDoor.title}}</div>
+            <br>
+            <span class="info-param">Заполнение:</span> {{selectedDoor.filling}}<br>
+            <br>
+            <span class="info-param">Покрытие:</span> {{selectedDoor.cover}}<br>
+            <br>
+            <span class="info-param">Открывание:</span> {{selectedDoor.opening}}<br>
+            <br>
+            <span class="info-param">Комплектующие:</span> {{selectedDoor.set}}<br>
+            <span class="info-param">Размеры полотна:</span> <span ng-bind-html="showHtml(selectedDoor.sizes)"></span><br>
+            <br>
+            <div class="prices">Цена за полотно: {{selectedDoor.polotno_price}}.<br>
+              Цена за комплект с монтажом: {{selectedDoor.polotno_and_montage_price}}.
+            </div>
+            <div class="buttons">
+              <input type="button" class="button" value="ХОЧУ УЗНАТЬ БОЛЬШЕ!" ng-click="openInOneClick()">
+            </div>
+          </div>
+          <div class="column" style="width: 115px;">
+            <div class="colors">
+              <div class="color" ng-repeat="color in selectedDoor.colors">
+                <img ng-src="images/colors/{{colors[color.key].pic_url}}" ng-click="selectedDoor.selected_color = color.pic_url" ng-style="{'cursor': color.pic_url=='' ? 'defaut' : 'pointer'}" />
+                <div style="margin-right: 3px; margin-top: -18px; color: white; margin-bottom:8px; ">{{colors[color.key].name}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="column room" style="width: 540px;">
+            <img ng-src="images/rooms/{{selectedDoor.room}}">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- <div id="discount-anchor" style="position:relative; margin-top:-35px; height:35px"></div> -->
   <div id="lead-old">
     <div class="wrapper columns">
       <div class="column lead-old-text" style="width: 220px;">
@@ -368,124 +382,6 @@
     </div>
   </div>
 
-  <div class="popup" id="door-default" ng-show="showDefaultDoorPopup">
-    <div class="block default-door">
-      <div class="door-title">{{selectedDoor.type}} {{selectedDoor.brand}}, {{selectedDoor.model}}, цвет {{colors[selectedDoor.color].name}}</div>
-      <div class="columns">
-        <div class="column" style="width: 200px">
-          <img ng-src="images/doors/{{selectedDoor.selected_cover_img}}" class="door-cover-img" />
-          <div style="font-size: 13px;">Цена c комплектом: {{selectedDoor.price_set}} р.<br>
-          Цена с монтажом: <!--{{selectedDoor.price_mont}}-->{{makeMontPrice(selectedDoor)}} р.</div>
-        </div>
-        <div class="column info" style="width: 292px; height: 250px; padding-right: 10px;">
-          Производитель: «{{selectedDoor.brand}}», {{selectedDoor.brand_city}}<br>
-          <br>
-          <span ng-if="selectedDoor.filling">
-            Заполнение: {{selectedDoor.filling}}<br>
-            <br>
-          </span>
-          <span ng-if="selectedDoor.cover">
-            Покрытие: {{selectedDoor.cover}}<br>
-            <br>
-          </span>
-          Размеры полотна: 
-            <span ng-if="selectedDoor.sizes_width == 'любые'">любые</span>
-            <span ng-if="selectedDoor.sizes_width != 'любые'">
-              <br>
-              ширина: {{selectedDoor.sizes_width}}<br>
-              высота: {{selectedDoor.sizes_height}}
-            </span>
-          <br><br>
-          Комплектующие: {{selectedDoor.set}}<br><br>
-          <span ng-if="selectedDoor.descr" ng-bind-html="showHtml(selectedDoor.descr)"></span>
-        </div>
-        <div class="column" style="width: 235px; height: 250px;">
-          <div class="door-form">
-            Узнайте о наличии этой модели<br>на складе<br>в нужной Вам расцветке
-            <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['normal-door']"></input>
-            <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['normal-door']"></input>
-            <input type="text" class="form-input form-mail" id="main-mail" placeholder="Ваш e-mail" ng-model="emails['normal-door']"></input>
-            <input type="button" id="main-name" class="button button-yellow" value="Перезвоните мне!" ng-click="sendData(this,'Запрос информации по двери '+selectedDoor.model,'normal-door')"></input>
-          </div>
-        </div>
-        <div class="column" style="height: 133px; width: 540px">
-          Варианты расцветок<span ng-if="selectedType=='glass'"> стекла</span>:
-          <div class="colors">
-            <div class="color" ng-repeat="color in selectedDoor.colors">
-              <img ng-src="images/colors/{{colors[color.key].pic_url}}" ng-click="changeColor(color)" ng-style="{'cursor': color.pic_url=='' ? 'defaut' : 'pointer'}" />
-              <span>{{colors[color.key].name}}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="closer" ng-click="closeAllPopups()">
-    </div>
-  </div>
-
-  <div class="popup" id="door-default" ng-show="showPaintDoorPopup">
-    <div class="block paint-door">
-      <div class="door-title">{{selectedDoor.type}} {{selectedDoor.brand}}, {{selectedDoor.model}}
-      <span ng-if="selectedDoor.color">, цвет {{colors[selectedDoor.color].name}}</span></div>
-      <div class="columns">
-        <div class="column" style="width: 185px">
-          <img ng-src="images/doors/{{selectedDoor.selected_cover_img}}" class="door-cover-img" />
-          <div style="font-size: 13px;">Цена c комплектом: {{selectedDoor.price_set}} р.<br>
-          Цена с монтажом: {{selectedDoor.price_mont}} р.</div>
-        </div>
-        <div class="column info" style="width: 274px; height: 350px; padding-right: 10px;">
-          Производитель: «{{selectedDoor.brand}}», {{selectedDoor.brand_city}}<br>
-          <br>
-          <span ng-if="selectedDoor.filling">
-            Заполнение: {{selectedDoor.filling}}<br>
-            <br>
-          </span>
-          <span ng-if="selectedDoor.cover">
-            Покрытие: {{selectedDoor.cover}}<br>
-            <br>
-          </span>
-          Размеры полотна: 
-            <span ng-if="selectedDoor.sizes_width == 'любые'">любые</span>
-            <span ng-if="selectedDoor.sizes_width != 'любые'">
-              <br>
-              ширина: {{selectedDoor.sizes_width}}<br>
-              высота: {{selectedDoor.sizes_height}}
-            </span>
-          <br><br>
-          Комплектующие: {{selectedDoor.set}}<br><br>
-          {{selectedDoor.descript}}<br>
-        </div>
-        <div class="column" style="width: 255px; height: 290px; margin-right: 10px;">
-          <div class="colors" ng-if="selectedDoor.colors.length > 0" style="margin-top:0px;">
-            <div class="color" ng-repeat="color in selectedDoor.colors">
-              <img ng-src="images/colors/{{colors[color.key].pic_url}}" ng-click="changeColor(color)" ng-style="{'cursor': color.pic_url=='' ? 'defaut' : 'pointer'}" />
-              <span>{{colors[color.key].name}}</span>
-            </div>
-          </div>
-        </div>
-        <div class="column" style="width: 235px; height: 290px;">
-          <div class="door-form" style="height: 264px;padding-top: 20px;">
-            Узнайте о наличии этой модели<br>на складе<br>в нужной Вам расцветке
-            <div style="height:15px;"></div>
-            <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['paint-door']"></input>
-            <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['paint-door']"></input>
-            <input type="text" class="form-input form-mail" id="main-mail" placeholder="Ваш e-mail" ng-model="emails['paint-door']"></input>
-            <input type="button" id="main-name" class="button button-yellow" value="Перезвоните мне!" ng-click="sendData(this,'Запрос информации по двери '+selectedDoor.model,'paint-door')"></input>
-          </div>
-        </div>
-        <div class="column" style="height: 50px; width: 540px">
-          Варианты расцветок:<br>
-          {{selectedDoor.paint}}
-        </div>
-        <div class="column" style="height: 124px; width: 237px;margin-top:-26px;margin-left:7px;">
-          <img src="images/RAL.jpg"/>
-        </div>
-      </div>
-    </div>
-    <div class="closer" ng-click="closeAllPopups()">
-    </div>
-  </div>
-
   <div class="popup" id="door-default" ng-show="showLeadPopup">
     <div class="block lead-popup">
       <span ng-bind-html="showHtml(leadPopupText)"></span>
@@ -500,11 +396,11 @@
 
   <div class="popup" id="door-default" ng-show="showInOneClick">
     <div class="block lead-popup">
-      Вы выбрали дверь "{{selectedDoor.model}}!"
+      Вы выбрали дверь "{{selectedDoor.short_title}}"!
       <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['oneclick']"></input>
       <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['oneclick']"></input>
       <input type="text" class="form-input form-mail" id="main-mail" placeholder="Ваш e-mail" ng-model="emails['oneclick']"></input>
-      <input type="button" id="main-name" class="button button-yellow" value="ВЫЗВАТЬ ЗАМЕРЩИКА" ng-click="sendData(this, 'Вызов замерщика, дверь '+selectedDoor.model, 'oneclick')"></input>
+      <input type="button" id="main-name" class="button button-yellow" value="УЗНАТЬ БОЛЬШЕ!" ng-click="sendData(this, 'Запрос информации, дверь '+selectedDoor.short_title, 'oneclick')"></input>
     </div>
     <div class="closer" ng-click="closeAllPopups()">
     </div>

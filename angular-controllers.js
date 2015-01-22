@@ -48,7 +48,6 @@ dveri.directive('inputMask', ['$document', function($document) {
 
 dveri.controller('MainCtrl', function ($scope, $sce, $location, $http) {
   $scope.selectedType = "shpon";
-  $scope.selectedDoor = {name: ""};
   $scope.names = {};
   $scope.phones = {};
   $scope.emails = {};
@@ -62,66 +61,120 @@ dveri.controller('MainCtrl', function ($scope, $sce, $location, $http) {
 
   $scope.currentWhere = "";
 
-  $scope.types = [
-    {key: "shpon", title: "Двери с<br> покрытием шпон"},
-    {key: "cpl", title: "Двери с пластиковым<br> покрытием CPL"},
-    {key: "paint", title: "Двери под<br> покраску"},
-    {key: "glass", title: "Стеклянные<br> двери"}
-  ];
+  $scope.doors = [
+    {title: "Межкомнатная дверь из массива, модель Adagio", 
+      short_title: "Adagio", filling: "массив", cover: "ПВХ",
+      opening: "универсальное", set: "коробка, комплект наличников", 
+      sizes: "ширина 600, 700, 800, 900* мм. <br>высота 2010 мм.<br>*Дверь размером 900 мм рассчитывается по дополнительной цене.", polotno_price: "4610p", polotno_and_montage_price: "6610p",
+       colors: [{key: "milky_dub", 
+      pic_url: "Адажио Дуб молочный.jpg"},
+      {key: "venge", 
+      pic_url: "Адажио Венге.jpg"},
+      {key: "noche_kremone", 
+      pic_url: "Адажио Ноче кремоне.jpg"}],
+      room: "адажио.jpg",
+      selected_color: "Адажио Дуб молочный.jpg"},
 
-  $scope.doors = {
-    shpon: [
-      {type: "Межкомнатная дверь", brand: "Краснодеревщик", brand_city: "г. Челябинск", model: "серия 3000, модель 33.24, стекло Торшон", cover: "натуральный шпон", color: "coffee", sizes_width: "600, 700, 800, 900, 1000 мм.", sizes_height: "2000, 2010 мм.", price_pol: "12 924", price_set: "17 623", set: "коробка, наличники с двух сторон, полотно", colors: [{key: "coffee", pic_url: "33.24 - кофе торшон.jpg"}, {key: "brazil_pear", pic_url: "33.24 бразиль груша.jpg"}], filling: "сотовое", cover_img: "33.24 - кофе торшон.jpg", position: "0px 0px"},
-      {type: "Межкомнатная дверь", brand: "Краснодеревщик", brand_city: "г. Челябинск", model: "серия 3000, модель 33.40, стекло Торшон", cover: "натуральный шпон", color: "brazil_pear", sizes_width: "600, 700, 800, 900, 1000 мм.", sizes_height: "2000, 2010 мм.", price_pol: "12 920", price_set: "17 620", set: "коробка, наличники с двух сторон, полотно", colors: [{key: "brazil_pear", pic_url: "33.40.jpg"}, {key: "coffee", pic_url: "33.40 кофе торшон.jpg"}], filling: "сотовое", cover_img: "33.40.jpg", position: "-98px 0px"},
-      {type: "Межкомнатная дверь", brand: "Краснодеревщик", brand_city: "г. Челябинск", model: "серия 7000, модель 73.04", cover: "натуральный шпон", color: "milky_dub", sizes_width: "600, 700, 800, 900, 1000 мм.", sizes_height: "2000, 2010 мм.", price_pol: "13 435", price_set: "15 633", set: "коробка, наличники с двух сторон, полотно", colors: [{key: "milky_dub", pic_url: "7004_dub_moloko.jpg"}, {key: "brazil_pear", pic_url: "7304 бразиль груша.jpg"}, {key: "mor_dub", pic_url: "73.04 мореный дуб.jpg"}, {key: "coffee", pic_url: "73.04 кофе сетка.jpg"}], filling: "сотовое", cover_img: "7004_dub_moloko.jpg", position: "-196px 0px"},
-      {type: "Межкомнатная дверь", brand: "Свобода", brand_city: "г. Рыбинск", model: "серия Loko, модель 204", cover: "натуральный шпон", color: "milky_dub", sizes_width: "600, 700, 800, 900 мм.", sizes_height: "2000 мм.", price_pol: "16 947", price_set: "28 715", set: "коробка, наличники с двух сторон, петли, полотно", colors: [{key: "white_yas", pic_url: "204 белый ясень.jpg"}, {key: "venge_li", pic_url: "204 венге лайсвуд.jpg"}, {key: "makasar", pic_url: "204 макассар.jpg"}, {key: "greywood", pic_url: "204 грейвуд.jpg"}], filling: "сотовое", cover_img: "204 белый ясень.jpg", position: "-294px 0px"},
-      {type: "Межкомнатная дверь", brand: "Свобода", brand_city: "г. Рыбинск", model: "серия Loko, модель 206", cover: "натуральный шпон", color: "greywood", sizes_width: "600, 700, 800, 900 мм.", sizes_height: "2000 мм.", price_pol: "13 182", price_set: "22 120", set: "коробка, наличники с двух сторон, петли, полотно", colors: [{key: "white_yas", pic_url: "206 белый ясень.jpg"}, {key: "venge_li", pic_url: "206 венге лайсвуд.jpg"}, {key: "makasar", pic_url: "206 макасар.jpg"}, {key: "greywood", pic_url: "206 грейвуд.jpg"}], filling: "сотовое", cover_img: "206 грейвуд.jpg", position: "-392px 0px"},
-      {type: "Межкомнатная дверь", brand: "Свобода", brand_city: "г. Рыбинск", model: "серия Loko, модель 209", cover: "натуральный шпон", color: "makasar", sizes_width: "600, 700, 800, 900 мм.", sizes_height: "2000 мм.", price_pol: "17 581", price_set: "29 456", set: "коробка, наличники с двух сторон, петли, полотно", colors: [{key: "white_yas", pic_url: "209 белый ясень.jpg"}, {key: "venge_li", pic_url: "209 венге лайсвуд.jpg"},  {key: "makasar", pic_url: "209 макассар.jpg"}, {key: "greywood", pic_url: "209 грейвуд.jpg"}], filling: "сотовое", cover_img: "209 макассар.jpg", position: "-490px 0px"},
-      {type: "Межкомнатная дверь", brand: "Свобода", brand_city: "г. Рыбинск", model: "серия Valdo, модель 751", cover: "натуральный шпон", color: "magnolia", sizes_width: "600, 700, 800, 900 мм.", sizes_height: "2000 мм.", price_pol: "13 827", price_set: "17 880", set: "коробка, наличники с двух сторон, полотно", colors: [{key: "magnolia", pic_url: ""}, {key: "it_nut", pic_url: ""}, {key: "nut", pic_url: ""}, {key: "svet_dub", pic_url: ""}, {key: "venge_li", pic_url: ""}], filling: "сотовое", cover_img: "0669.jpg", position: "-588px 0px"},
-      {type: "Межкомнатная дверь", brand: "Свобода", brand_city: "г. Рыбинск", model: "серия Valdo, модель 750 ПГ", cover: "натуральный шпон", color: "gold", sizes_width: "600, 700, 800, 900 мм.", sizes_height: "2000 мм.", price_pol: "11 951", price_set: "18 071", set: "коробка, наличники с двух сторон, полотно", colors: [{key: "gold", pic_url: ""}, {key: "it_nut", pic_url: ""}, {key: "nut", pic_url: ""}, {key: "svet_dub", pic_url: ""}, {key: "venge", pic_url: ""}], filling: "сотовое", cover_img: "вальдо 750 пг.jpg", position: "-686px 0px"},
-      {type: "Межкомнатная дверь", brand: "Свобода", brand_city: "г. Рыбинск", model: "серия Valdo, модель 750 ПГ", cover: "натуральный шпон", color: "merbau", sizes_width: "600, 700, 800, 900 мм.", sizes_height: "2000 мм.", price_pol: "9 304", price_set: "13 418", set: "коробка, наличники с двух сторон, полотно", colors: [{key: "merbau", pic_url: ""}, {key: "gold", pic_url: ""}, {key: "nut", pic_url: ""}, {key: "svet_dub", pic_url: ""}, {key: "venge", pic_url: ""}], filling: "сотовое", cover_img: "750ПГ.jpg", position: "-784px 0px"}
-    ],
-    cpl: [
-      {type: "Межкомнатная дверь", brand: "Краснодеревщик", brand_city: "г. Челябинск", model: "серия 400, модель 423", color: "dub_kanella", cover: "CPL(экошпон)", color: "dub_kanella", sizes_width: "600, 700, 800, 900, 1000 мм.", sizes_height: "2000, 2010 мм.", price_pol: "6 170", price_set: "9 912", set: "коробка, наличники с двух сторон, полотно, петли, замок", colors: [{key: "dub_kanella", pic_url: "423.jpg"}, {key: "dub_alaska", pic_url: "423_dub_alyaska.jpg"}, {key: "dub_sher", pic_url: "423_dub_servud.jpg"}], filling: "сотовое", cover_img: "423.jpg", position: "0px -210px"},
-      {type: "Межкомнатная дверь", brand: "Краснодеревщик", brand_city: "г. Челябинск", model: "серия 2000, модель 20.23", color: "dark_nut", cover: "CPL(экошпон)", color: "dark_nut", sizes_width: "600, 700, 800, 900, 1000 мм.", sizes_height: "2000, 2010 мм.", price_pol: "11 059", price_set: "18 420", set: "коробка, наличники с двух сторон, полотно, петли, замок", colors: [{key: "dark_nut", pic_url: "2023.jpg"}, {key: "white_wood", pic_url: "2023 бел.jpg"}], filling: "царговое", cover_img: "2023.jpg", position: "-98px -210px"},
-      {type: "Межкомнатная дверь", brand: "Краснодеревщик", brand_city: "г. Челябинск", model: "серия 3000, модель 33.24, стекло матовое", color: "white", cover: "CPL(экошпон)", sizes_width: "600, 700, 800, 900, 1000 мм.", sizes_height: "2000, 2010 мм.", price_pol: "8 055", price_set: "12 789", set: "коробка, наличники с двух сторон, полотно, петли, замок", colors: [{key: "black_dub", pic_url: "33.24 черный дуб.jpg"}, {key: "dub_sher", pic_url: "33_24_sherwood.jpg"}, {key: "bisk_nut", pic_url: "33_24_oreh_biskotto.jpg"}, {key: "whitened_dub", pic_url: "33_24_vibel_dub.jpg"}, {key: "walnut", pic_url: "33_24_grec_orex.jpg"}], filling: "сотовое", cover_img: "33_24_vibel_dub.jpg", position: "-196px -210px"},
-      {type: "Межкомнатная дверь", brand: "Краснодеревщик", brand_city: "г. Челябинск", model: "серия 3000, модель 33.40f, стекло цветное", color: "white", cover: "CPL(экошпон)", sizes_width: "600, 700, 800, 900, 1000 мм.", sizes_height: "2000, 2010 мм.", price_pol: "8 055", price_set: "12 789", set: "коробка, наличники с двух сторон, полотно, петли, замок", colors: [{key: "white_wood", pic_url: "3340.jpg"}], filling: "сотовое", cover_img: "3340.jpg", position: "-294px -210px"},
-      {type: "Межкомнатная дверь", brand: "Краснодеревщик", brand_city: "г. Челябинск", model: "серия 3000, модель 33.52", color: "black_dub", cover: "CPL(экошпон)", sizes_width: "600, 700, 800, 900, 1000 мм.", sizes_height: "2000, 2010 мм.", price_pol: "5 854", price_set: "9 610", set: "коробка, наличники с двух сторон, полотно, петли, замок", colors: [{key: "black_dub", pic_url: "3352.jpg"}, {key: "dub_sher", pic_url: "33.52 шервуд со стеклом.jpg"}, {key: "bisk_nut", pic_url: "33.52 орех бискотто со стеклом.jpg"}, {key: "whitened_dub", pic_url: "33.52 выбеленный дуб со стеклом.jpg"}, {key: "walnut", pic_url: "33.52 гр орех со стеклом.jpg"}], filling: "сотовое", cover_img: "3352.jpg", position: "-392px -210px"},
-      {type: "Межкомнатная дверь", brand: "Краснодеревщик", brand_city: "г. Челябинск", model: "серия 5000, модель 50.04, стекло вклеенное", color: "whitened_dub", cover: "CPL(экошпон)", sizes_width: "600, 700, 800, 900, 1000 мм.", sizes_height: "2000, 2010 мм.", price_pol: "11 001", price_set: "14 798", set: "коробка, наличники с двух сторон, полотно, петли, замок", colors: [{key: "black_dub", pic_url: "5004 черный дуб.jpg"}, {key: "dub_alaska", pic_url: "50_04_dub_alyaska.jpg"}, {key: "dub_kanella", pic_url: "50_04_dub_kannela.jpg"}, {key: "medi", pic_url: "5004 Медиакация.jpg"}, {key: "walnut", pic_url: "5004 гр орех.jpg"}, {key: "white_wood", pic_url: "50_04_bel.jpg"}], filling: "сотовое", cover_img: "50_04_bel.jpg", position: "-490px -210px"},
-      {type: "Межкомнатная дверь", brand: "Краснодеревщик", brand_city: "г. Челябинск", model: "серия 5000, модель 50.66, стекло Лиана", color: "whitened_dub", cover: "CPL(экошпон)", sizes_width: "600, 700, 800, 900, 1000 мм.", sizes_height: "2000, 2010 мм.", price_pol: "6 612", price_set: "10 827", set: "коробка, наличники с двух сторон, полотно, петли, замок", colors: [{key: "black_dub", pic_url: "50.66 ч дуб стекло лиана.jpg"}, {key: "dub_alaska", pic_url: "50_66_dub_alyaska_liana.jpg"}, {key: "dub_kanella", pic_url: "50_66__dub_kannela_liana.jpg"}, {key: "whitened_dub", pic_url: "50.66 выб дуб лиана.jpg"}, {key: "walnut", pic_url: "50_66_grec_orex_liana.jpg"}, {key: "white_wood", pic_url: "50.66 белый лиана.jpg"}], filling: "сотовое", cover_img: "50.66 выб дуб лиана.jpg", position: "-588px -210px"},
-      {type: "Межкомнатная дверь", brand: "Краснодеревщик", brand_city: "г. Челябинск", model: "серия 6000, модель 63.23", color: "dub_pale", cover: "CPL(экошпон)", sizes_width: "600, 700, 800, 900, 1000 мм.", sizes_height: "2000, 2010 мм.", price_pol: "5 854", price_set: "9 610", set: "коробка, наличники с двух сторон, полотно, петли, замок", colors: [{key: "dub_shv", pic_url: "6323 dub_sharc.jpg"}, {key: "tanganika", pic_url: "6323 tanganika.jpg"}, {key: "dub_pale", pic_url: "6323.jpg"}, {key: "white_wood", pic_url: "6323 bel.jpg"}], filling: "сотовое", cover_img: "6323.jpg", position: "-686px -210px"},     
-      {type: "Межкомнатная дверь", brand: "Краснодеревщик", brand_city: "г. Челябинск", model: "серия 6000, модель 63.40", color: "dub_shv", cover: "CPL(экошпон)", sizes_width: "600, 700, 800, 900, 1000 мм.", sizes_height: "2000, 2010 мм.", price_pol: "5 718", price_set: "9 473", set: "коробка, наличники с двух сторон, полотно, петли, замок", colors: [{key: "dub_shv", pic_url: "6340.jpg"}, {key: "tanganika", pic_url: "6340 tanganika.jpg"}, {key: "dub_pale", pic_url: "6340 dub_pepel.jpg"}, {key: "white_wood", pic_url: "6340 bel.jpg"}], filling: "сотовое", cover_img: "6340.jpg", position: "-784px -210px"}
-    ],
-    paint: [
-      {type: "Межкомнатная дверь", brand: "Vivo-Porte",  brand_city: "г. Светлый", model: "линия  Глория, модель 30.11", cover: "полиуретан или шпон дуба", sizes_width: "600, 700, 800, 900, 1000 мм.", price_set: "10 520", price_mont: "12 820", set: "коробка, наличники с двух сторон, петли, замок, полотно", colors: [{key: "kanaletto", pic_url: "глория 3011 каналетто.jpg"}, {key: "dub_tab", pic_url: "глория 3011 дуб табак.jpg"}, {key: "venge_mok", pic_url: "глория 3011 венге мокка.jpg"}, {key: "greywood", pic_url: "30 глория 30.11.jpg"}, {key: "dub_fine", pic_url: "глория 3011 дуб файнлайн.jpg"}], filling: "каркас из сращенного бруса хвойных пород дерева", descript: "Многообразие вариантов отделок (шпон с открытым порами, шпон под покраску, полиуретановое покрытие)", paint: "Двери серии Глория окрашиваются полиуретановыми красками по шпону дуба в любой цвет таблицы цветов RAL.", cover_img: "глория 3011 каналетто.jpg", inter_img: "", position: "0px -420px"},
-      {type: "Межкомнатная дверь", brand: "Vivo-Porte",  brand_city: "г. Светлый", model: "линия  Глория, модель 30.19", cover: "полиуретан или шпон дуба", sizes_width: "600, 700, 800, 900, 1000 мм.", price_set: "12 970", price_mont: "15 270", set: "коробка, наличники с двух сторон, петли, замок, полотно", colors: [{key: "whitened_dub", pic_url: "30 глория 30.19.jpg"}, {key: "dub_tab", pic_url: "глория 3019 дуб табак.jpg"}, {key: "venge_mok", pic_url: "глория 3019 венге мокка.jpg"}, {key: "venge_pokr", pic_url: "глория 3019 венге файнлайн.jpg"}, {key: "dub_fine", pic_url: "глория 3019 дуб файнлайн.jpg"}], filling: "каркас из сращенного бруса хвойных пород дерева", descript: "Многообразие вариантов отделок (шпон с открытым порами, шпон под покраску, полиуретановое покрытие)", paint: "Двери серии Глория окрашиваются полиуретановыми красками по шпону дуба в любой цвет таблицы цветов RAL.", cover_img: "30 глория 30.19.jpg", inter_img: "", position: "-98px -420px"},
-      {type: "Межкомнатная дверь", brand: "Vivo-Porte",  brand_city: "г. Светлый", model: "линия  Глория, модель 30.29", cover: "полиуретан или шпон дуба", sizes_width: "600, 700, 800, 900, 1000 мм.", price_set: "11 790", price_mont: "14 090", set: "коробка, наличники с двух сторон, петли, замок, полотно", colors: [{key: "kanaletto", pic_url: "глория 3029 каналетто.jpg"}, {key: "dub_tab", pic_url: "глория 3029 дуб табак.jpg"}, {key: "venge_mok", pic_url: "глория 3029 венге мокка.jpg"}, {key: "venge_pokr", pic_url: "глория 3029 венге файнлайн.jpg"}, {key: "dub_fine", pic_url: "глория 3029 дуб файнлайн.jpg"}], filling: "каркас из сращенного бруса хвойных пород дерева", descript: "Многообразие вариантов отделок (шпон с открытым порами, шпон под покраску, полиуретановое покрытие)", paint: "Двери серии Глория окрашиваются полиуретановыми красками по шпону дуба в любой цвет таблицы цветов RAL.", cover_img: "глория 3029 каналетто.jpg", inter_img: "", position: "-196px -420px"},
-      {type: "Межкомнатная дверь", brand: "Vivo-Porte",  brand_city: "г. Светлый", model: "линия  Глория, модель 30.32", cover: "полиуретан или шпон дуба", sizes_width: "600, 700, 800, 900, 1000 мм.", price_set: "13 890", price_mont: "16 190", set: "коробка, наличники с двух сторон, петли, замок, полотно", colors: [{key: "kanaletto", pic_url: "глория 3032 каналетто.jpg"}, {key: "dub_tab", pic_url: "глория 3032 дуб табак.jpg"}, {key: "venge_mok", pic_url: "глория 3032 венге мокка.jpg"}, {key: "venge_pokr", pic_url: "глория 3032 венге файнлайн.jpg"}, {key: "dub_fine", pic_url: "глория 3032 дуб файнлайн.jpg"}], filling: "каркас из сращенного бруса хвойных пород дерева", descript: "Многообразие вариантов отделок (шпон с открытым порами, шпон под покраску, полиуретановое покрытие)", paint: "Двери серии Глория окрашиваются полиуретановыми красками по шпону дуба в любой цвет таблицы цветов RAL.", cover_img: "глория 3032 каналетто.jpg", inter_img: "", position: "-294px -420px"},
-      {type: "Межкомнатная дверь", brand: "Vivo-Porte",  brand_city: "г. Светлый", model: "линия  Версаль, модель 15.12", cover: "полиуретан или шпон дуба", sizes_width: "600, 700, 800, 900, 1000 мм.", price_set: "14 280", price_mont: "16 580", set: "коробка, наличники с двух сторон, петли, замок, полотно", colors: [], filling: "каркас из сращенного бруса хвойных пород дерева", descript: "Легкие и прочные двери Версаль достойны дворцов. Уникальные цвета окраски: от теплого до радостно-яркого", paint: "Двери серии Версаль окрашиваются полиуретановыми красками по шпону дуба в любой цвет таблицы цветов RAL с последующим лакированием поверхностей.Окраска по шпону дуба сохраняет текстуру дерева.", cover_img: "версаль 15.12.jpg", inter_img: "", position: "-392px -420px"},
-      {type: "Межкомнатная дверь", brand: "Vivo-Porte",  brand_city: "г. Светлый", model: "линия  Версаль, модель 15.19", cover: "полиуретан или шпон дуба", sizes_width: "600, 700, 800, 900, 1000 мм.", price_set: "14 280", price_mont: "16 580", set: "коробка, наличники с двух сторон, петли, замок, полотно", colors: [], filling: "каркас из сращенного бруса хвойных пород дерева", descript: "Легкие и прочные двери Версаль достойны дворцов. Уникальные цвета окраски: от теплого до радостно-яркого", paint: "Двери серии Версаль окрашиваются полиуретановыми красками по шпону дуба в любой цвет таблицы цветов RAL с последующим лакированием поверхностей.Окраска по шпону дуба сохраняет текстуру дерева.", cover_img: "версаль 15.19.jpg", inter_img: "", position: "-490px -420px"},
-      {type: "Межкомнатная дверь", brand: "Vivo-Porte",  brand_city: "г. Светлый", model: "линия  Версаль, модель 15.36", cover: "полиуретан или шпон дуба", sizes_width: "600, 700, 800, 900, 1000 мм.", price_set: "15 980", price_mont: "18 280", set: "коробка, наличники с двух сторон, петли, замок, полотно", colors: [], filling: "каркас из сращенного бруса хвойных пород дерева", descript: "Легкие и прочные двери Версаль достойны дворцов. Уникальные цвета окраски: от теплого до радостно-яркого", paint: "Двери серии Версаль окрашиваются полиуретановыми красками по шпону дуба в любой цвет таблицы цветов RAL с последующим лакированием поверхностей.Окраска по шпону дуба сохраняет текстуру дерева.", cover_img: "версаль 15.36.jpg", inter_img: "", position: "-588px -420px"},
-      {type: "Межкомнатная дверь", brand: "Vivo-Porte",  brand_city: "г. Светлый", model: "линия  Версаль, модель 15.69", cover: "полиуретан или шпон дуба", sizes_width: "600, 700, 800, 900, 1000 мм.", price_set: "16 805", price_mont: "19 105", set: "коробка, наличники с двух сторон, петли, замок, полотно", colors: [], filling: "каркас из сращенного бруса хвойных пород дерева", descript: "Легкие и прочные двери Версаль достойны дворцов. Уникальные цвета окраски: от теплого до радостно-яркого", paint: "Двери серии Версаль окрашиваются полиуретановыми красками по шпону дуба в любой цвет таблицы цветов RAL с последующим лакированием поверхностей.Окраска по шпону дуба сохраняет текстуру дерева.", cover_img: "версаль 15.69.jpg", inter_img: "", position: "-686px -420px"},
-      {type: "Межкомнатная дверь", brand: "Vivo-Porte",  brand_city: "г. Светлый", model: "линия  Версаль, модель 15.75", cover: "полиуретан или шпон дуба", sizes_width: "600, 700, 800, 900, 1000 мм.", price_set: "17 400", price_mont: "19 700", set: "коробка, наличники с двух сторон, петли, замок, полотно", colors: [], filling: "каркас из сращенного бруса хвойных пород дерева", descript: "Легкие и прочные двери Версаль достойны дворцов. Уникальные цвета окраски: от теплого до радостно-яркого", paint: "Двери серии Версаль окрашиваются полиуретановыми красками по шпону дуба в любой цвет таблицы цветов RAL с последующим лакированием поверхностей.Окраска по шпону дуба сохраняет текстуру дерева.", cover_img: "версаль 15.75.jpg", inter_img: "", position: "-784px -420px"},
-    ],
-    glass: [
-      {type: "Стеклянная межкомнатная дверь", brand: "Акма", brand_city: "г. Санкт-Петербург", model: "серия Fantasy, модель Ночь", color: "mat_clear", sizes_width: "любые", price_pol: "10 410", price_set: "24 764", set: "коробка (алюминий или дерево), полотно, петли, ручка", colors: [{key: "clear", pic_url: ""}, {key: "bronze", pic_url: ""}, {key: "grey_glass", pic_url: ""}, {key: "mat_clear", pic_url: ""}, {key: "mat_bronze", pic_url: ""}, {key: "mat_grey", pic_url: ""}], descr: "Стекло с пескоструйным рисунком.<br>Подходит для ванных, душевых и саун.", cover_img: "акма - fantazy ночь.jpg", position: "0px -630px"},
-      {type: "Стеклянная межкомнатная дверь", brand: "Акма", brand_city: "г. Санкт-Петербург", model: "серия Florid, модель Пенелопа", color: "mat_clear", sizes_width: "любые", price_pol: "13 804", price_set: "28 158", set: "коробка (алюминий или дерево), полотно, петли, ручка", colors: [{key: "clear", pic_url: ""}, {key: "bronze", pic_url: ""}, {key: "grey_glass", pic_url: ""}, {key: "mat_clear", pic_url: ""}, {key: "mat_bronze", pic_url: ""}, {key: "mat_grey", pic_url: ""}], descr: "Декорирование дверного полотна спечеными цветными стеклами, выполненными по технологии Фьюзинг. Подходит для ванных, душевых и саун.", cover_img: "акма пенелопа.jpg", position: "-98px -630px"},
-      {type: "Стеклянная межкомнатная дверь", brand: "Акма", brand_city: "г. Санкт-Петербург", model: "серия Illusion, модель Аврора", color: "mat_clear", sizes_width: "любые", price_pol: "9 804", price_set: "24 158", set: "коробка (алюминий или дерево), полотно, петли, ручка", colors: [{key: "clear", pic_url: ""}, {key: "bronze", pic_url: ""}, {key: "grey_glass", pic_url: ""}, {key: "mat_clear", pic_url: ""}, {key: "mat_bronze", pic_url: ""}, {key: "mat_grey", pic_url: ""}], descr: "Серия ILLUSION представлена различными видами рисунков, которые наносятся на полотно методом гравировки. Подходит для ванных, душевых и саун.", cover_img: "иллюзион - аврора.jpg", position: "-196px -630px"},
-      {type: "Стеклянная межкомнатная дверь", brand: "Акма", brand_city: "г. Санкт-Петербург", model: "серия Illusion, модель Диана", color: "mat_clear", sizes_width: "любые", price_pol: "10 894", price_set: "25 248", set: "коробка (алюминий или дерево), полотно, петли, ручка", colors: [{key: "clear", pic_url: ""}, {key: "bronze", pic_url: ""}, {key: "grey_glass", pic_url: ""}, {key: "mat_clear", pic_url: ""}, {key: "mat_bronze", pic_url: ""}, {key: "mat_grey", pic_url: ""}], descr: "Серия ILLUSION представлена различными видами рисунков, которые наносятся на полотно методом гравировки. Подходит для ванных, душевых и саун.", cover_img: "иллюзион - диана.jpg", position: "-294px -630px"},
-      {type: "Стеклянная межкомнатная дверь", brand: "Акма", brand_city: "г. Санкт-Петербург", model: "серия Light, модель Light бронза матовая", color: "mat_bronze", sizes_width: "любые", price_pol: "9 842", price_set: "24 169", set: "коробка (алюминий или дерево), полотно, петли, ручка", colors: [{key: "clear", pic_url: ""}, {key: "bronze", pic_url: ""}, {key: "grey_glass", pic_url: ""}, {key: "mat_clear", pic_url: ""}, {key: "mat_bronze", pic_url: ""}, {key: "mat_grey", pic_url: ""}], descr: "Гладкое стекло без декоративных элементов. Элегантные  двери LIGHT впишутся в любой интерьер.<br>Подходит для ванных, душевых и саун.", cover_img: "акма лайт.jpg", position: "-392px -630px"},
-      {type: "Стеклянная межкомнатная дверь", brand: "Акма", brand_city: "г. Санкт-Петербург", model: "серия Light, модель Light", color: "mat_clear", sizes_width: "любые", price_pol: "6 874", price_set: "21 228", set: "коробка (алюминий или дерево), полотно, петли, ручка", colors: [{key: "clear", pic_url: ""}, {key: "bronze", pic_url: ""}, {key: "grey_glass", pic_url: ""}, {key: "mat_clear", pic_url: ""}, {key: "mat_bronze", pic_url: ""}, {key: "mat_grey", pic_url: ""}], descr: "Гладкое стекло без декоративных элементов. Элегантные  двери LIGHT впишутся в любой интерьер.<br>Подходит для ванных, душевых и саун.", cover_img: "МАТОВАЯ.jpg", position: "-490px -630px"},
-      {type: "Стеклянная межкомнатная дверь", brand: "Акма", brand_city: "г. Санкт-Петербург", model: "серия Triplex, модель Black", color: "black", sizes_width: "любые", price_pol: "14 522", price_set: "28 906", set: "коробка (алюминий или дерево), полотно, петли, ручка", colors: [{key: "black", pic_url: ""}, {key: "red", pic_url: ""}, {key: "orange", pic_url: ""}, {key: "white", pic_url: ""}], descr: "Дверь может быть выполнена в любом цвете по каталогу RAL", cover_img: "акма black.jpg", position: "-588px -630px"},
-      {type: "Стеклянная межкомнатная дверь", brand: "Акма", brand_city: "г. Санкт-Петербург", model: "серия Satin, модель Хохлома", color: "mat_clear", sizes_width: "любые", price_pol: "11 290", price_set: "25 644", set: "коробка (алюминий или дерево), полотно, петли, ручка", colors: [{key: "clear", pic_url: ""}, {key: "bronze", pic_url: ""}, {key: "grey_glass", pic_url: ""}, {key: "mat_clear", pic_url: ""}, {key: "mat_bronze", pic_url: ""}, {key: "mat_grey", pic_url: ""}], descr: "Декор выполнен печатью керамическими красками, устойчив к неблагоприятным воздействиям: нагреванию, влажности, солнечному свету.<br>Подходит для ванных, душевых и саун.", cover_img: "акма хохлома.jpg", position: "-686px -630px"},
-      {type: "Стеклянная межкомнатная дверь", brand: "Акма", brand_city: "г. Санкт-Петербург", model: "серия Imagination, модель Books", color: "mat_clear", sizes_width: "любые", price_pol: "11 158", price_set: "25 512", set: "коробка (алюминий или дерево), полотно, петли, ручка", colors: [{key: "clear", pic_url: ""}, {key: "bronze", pic_url: ""}, {key: "grey_glass", pic_url: ""}, {key: "mat_clear", pic_url: ""}, {key: "mat_bronze", pic_url: ""}, {key: "mat_grey", pic_url: ""}], descr: "Печать любого изображения с одной или обеих сторон.<br>Подходит для ванных, душевых и саун.", cover_img: "акма books.jpg", position: "-784px -630px"}
-    ]
-  }
+
+      {title: "Межкомнатная дверь из массива, модель Legro ДО", 
+      short_title: "Legro ДО", filling: "массив", cover: "ПВХ",
+      opening: "универсальное", set: "коробка, комплект наличников", 
+      sizes: "ширина 600, 700, 800, 900* мм. <br>высота 2010 мм.<br>*Дверь размером 900 мм рассчитывается по дополнительной цене.", polotno_price: "5010p", polotno_and_montage_price: "7010p",
+       colors: [{key: "venge", 
+      pic_url: "Легро ДО венге.jpg"},
+      {key: "milky_dub", 
+      pic_url: "Легро ДО дуб молочный.jpg"},
+      {key: "noche_kremone", 
+      pic_url: "Легро ДО Ноче кремоне.jpg"}],
+      room: "легро.jpg",
+      selected_color: "Легро ДО венге.jpg"},
+
+
+      {title: "Межкомнатная дверь из массива, модель Maestro", 
+      short_title: "Maestro", filling: "массив", cover: "ПВХ",
+      opening: "универсальное", set: "коробка, комплект наличников", 
+      sizes: "ширина 600, 700, 800, 900* мм. <br>высота 2010 мм.<br>*Дверь размером 900 мм рассчитывается по дополнительной цене.", polotno_price: "5030p", polotno_and_montage_price: "7030p",
+       colors: [{key: "milky_dub", 
+      pic_url: "Маэстро Дуб молочный.jpg"},
+      {key: "venge", 
+      pic_url: "Маэстро Венге.jpg"},
+      {key: "noche_kremone", 
+      pic_url: "Маэстро Ноче кремоне.jpg"}],
+      room: "маэстро.jpg",
+      selected_color: "Маэстро Дуб молочный.jpg"},
+
+      {title: "Межкомнатная дверь из массива, модель Forte Ч.С.", 
+      short_title: "Forte Ч.С.", filling: "массив", cover: "ПВХ",
+      opening: "универсальное", set: "коробка, комплект наличников", 
+      sizes: "ширина 600, 700, 800, 900* мм.<br>высота 2010 мм.<br>*Дверь размером 900 мм рассчитывается по дополнительной цене.", polotno_price: "5200p", polotno_and_montage_price: "7200p",
+       colors: [{key: "venge", 
+      pic_url: "Форте ч.с. Венге.jpg"},
+      {key: "noche_kremone", 
+      pic_url: "Форте ч.с. Ноче кремоне.jpg"},
+      {key: "milky_dub", 
+      pic_url: "форте ч.с. Дуб молочный.jpg"}],
+      room: "форте.jpg",
+      selected_color: "Форте ч.с. Венге.jpg"},
+
+
+      {title: "Межкомнатная дверь из массива, модель Piano", 
+      short_title: "Piano", filling: "массив", cover: "ПВХ",
+      opening: "универсальное", set: "коробка, комплект наличников", 
+      sizes: "ширина 600, 700, 800, 900* мм. <br>высота 2010 мм.<br>*Дверь размером 900 мм рассчитывается по дополнительной цене.", polotno_price: "5030p", polotno_and_montage_price: "7030p",
+       colors: [{key: "venge", 
+      pic_url: "Пиано Венге.jpg"},
+      {key: "milky_dub", 
+      pic_url: "Пиано Дуб молочный.jpg"},
+      {key: "noche_kremone", 
+      pic_url: "Пиано Ноче кремоне.jpg",
+      }],
+      selected_color: "Пиано Венге.jpg"
+      },
+
+
+
+
+
+      {title: "Межкомнатная дверь из массива, модель Primo Ч.С.", 
+      short_title: "Primo Ч.С.", filling: "массив", cover: "ПВХ",
+      opening: "универсальное", set: "коробка, комплект наличников", 
+      sizes: "ширина 600, 700, 800, 900* мм. <br>высота 2010 мм.<br>*Дверь размером 900 мм рассчитывается по дополнительной цене.", polotno_price: "5030p", polotno_and_montage_price: "7030p",
+       colors: [{key: "shamp_dub", 
+      pic_url: "Примо ч.с дуб шампань.jpg"},
+      {key: "venge", 
+      pic_url: "примо ч.с. Венге.jpg"},
+      {key: "noche_kremone", 
+      pic_url: "примо ч.с. Ноче кремоне.jpg"}],
+      room: "примо.jpg",
+      selected_color: "Примо ч.с дуб шампань.jpg"},
+
+
+      { title: "Межкомнатная дверь из массива, модель El Porto", 
+        short_title: "El Porto", filling: "массив", cover: "ПВХ",
+        opening: "универсальное", set: "коробка, комплект наличников", 
+        sizes: "ширина 600, 700, 800, 900* мм. <br>высота 2010 мм.<br>*Дверь размером 900 мм рассчитывается по дополнительной цене.", 
+        polotno_price: "5030p", 
+        polotno_and_montage_price: "7030p",
+        colors: [
+          {key: "venge", pic_url: "Эль порте Венге.jpg"},
+          {key: "noche_kremone", pic_url: "Эль порте Ноче кремоне.jpg"},
+          {key: "milky_dub", pic_url: "Эль порте Дуб молочный.jpg"}
+        ],
+        room: "эль порте.jpg",
+        selected_color: "Эль порте Венге.jpg"
+      }
+  ]
+
+  $scope.selectedDoor = $scope.doors[3];
 
   $scope.colors = {
     milky_dub: {name: "Молочный дуб", pic_url: "молочный дуб.jpg"},
+    shamp_dub: {name: "Дуб шампань", pic_url: "дуб шампань.jpg"},
     brazil_pear: {name: "Бразильская груша", pic_url: "бразильская груша.jpg"},
     mor_dub: {name: "Мореный дуб", pic_url: "мореный дуб.jpg"},
     coffee: {name: "Кофе", pic_url: "кофе.jpg"},
     kanaletto: {name: "Каналетто", pic_url: "каналетто.jpg"},
+    noche_kremone: {name: "Ноче кремоне", pic_url: "ноче кремоне.jpg"},
     venge: {name: "Венге", pic_url: "венге кв.jpg"},
     venge_mok: {name: "Венге мокка", pic_url: "венге мокка.jpg"},
     venge_li: {name: "Венге лайсвуд", pic_url: "венге лайсвуд.jpg"},
@@ -232,16 +285,6 @@ dveri.controller('MainCtrl', function ($scope, $sce, $location, $http) {
     $scope.showLeadPopup = true;
   }
 
-  $scope.openDoorPopup = function(door){
-    $scope.selectedDoor = door;
-    $scope.selectedDoor.selected_cover_img = $scope.selectedDoor.cover_img
-    if ($scope.selectedType=="paint") {
-      $scope.showPaintDoorPopup = true;
-    }else{
-      $scope.showDefaultDoorPopup = true;
-    }
-  }
-
   $scope.changeColor = function(color){
     if (color.pic_url!='') 
       $scope.selectedDoor.selected_cover_img = color.pic_url;
@@ -251,9 +294,8 @@ dveri.controller('MainCtrl', function ($scope, $sce, $location, $http) {
     $scope.showPolitics = true;
   }
 
-  $scope.openInOneClick = function(door){
+  $scope.openInOneClick = function(){
     $scope.showInOneClick = true;
-    $scope.selectedDoor = door;
   }
 
   $scope.closeAllPopups = function(){

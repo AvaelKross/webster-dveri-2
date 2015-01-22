@@ -498,22 +498,53 @@ input[type='button'] {
 }
 
 .door {
-  width: 33.3%;
   margin-bottom: 35px;
+  margin-left:11px;
+  margin-right:11px;
 }
 
-.door .info {
+.door:last-child {
+  margin-right: 0px;
+}
+
+.door:last-child.selected {
+  margin-right: -11px;
+}
+
+.door:first-child {
+  margin-left: 0px;
+}
+
+.door:first-child.selected {
+  margin-left: -11px;
+}
+
+#catalog .info {
   font-size: 14px;
-  float: left;
-  padding-left: 15px;
-  width: 205px;
-  height: 220px;
+  width: 100%;
+  height: 400px;
 }
 
-.mini-door-img {
-  height: 210px;
-  width: 98px;
+#catalog .columns {
   float: left;
+}
+
+.door img {
+  height: 317px;
+  width: 124px;
+  cursor: pointer;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+}
+
+.door.selected {
+  margin-right:0px;
+  margin-left:0px;
+}
+
+.door.selected img {
+  width: 146px;
+  height: 373px;
+  margin-bottom: -28px;
 }
 
 .door input {
@@ -529,6 +560,37 @@ input[type='button'] {
   margin-top:15px;
   width: 100%;
   float: left;
+}
+
+.info-title {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.info-param {
+  font-weight: 700;
+}
+.info .prices {
+  font-weight: 700;
+  margin-top:32px;
+}
+
+.info .button {
+  background-color: #ff7353;
+  margin: 0px;
+  width: 335px;
+  color: white;
+  margin-top: 15px;
+}
+
+.info .button:hover {
+  background-color: #ff380a;
+}
+
+.room img {
+  max-width:550px;
+  max-height:312px;
 }
 
 #discount {
@@ -902,19 +964,18 @@ input[type='button'] {
 }
 
 .colors {
-  margin-top: 3px;
 }
 
 .colors .color {
   width: 90px;
   font-size: 12px;
-  text-align: center;
+  text-align: right;
   float: left;
 }
 
 .colors .color img{
-  width: 87px;
-  height: 87px;
+  width: 100px;
+  height: 100px;
   margin: 0px auto;
   margin-bottom: 3px;
 }
