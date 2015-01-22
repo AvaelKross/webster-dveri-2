@@ -533,6 +533,7 @@ input[type='button'] {
 #catalog .info {
   font-size: 14px;
   width: 100%;
+  padding-left: 11px;
   height: 400px;
 }
 
