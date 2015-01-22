@@ -234,7 +234,7 @@
               Цена за комплект: {{selectedDoor.polotno_and_montage_price}}.
             </div>
             <div class="buttons">
-              <input type="button" class="button" value="ХОЧУ УЗНАТЬ БОЛЬШЕ!" ng-click="openInOneClick()">
+              <input type="button" class="button" value="УЗНАТЬ ПОДРОБНОСТИ" ng-click="openInOneClick()">
             </div>
           </div>
           <div class="column" style="width: 115px;">
@@ -262,9 +262,9 @@
         ЗАКАЖИТЕ ПОЛНЫЙ<BR>КАТАЛОГ ПО ПОЧТЕ
       </div>
       <div class="column lead-old-form">
-        <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['catalog']"></input>
-        <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['catalog']"></input>
-        <input type="text" class="form-input form-mail" id="main-mail" placeholder="Ваш e-mail" ng-model="emails['catalog']"></input>
+        <input type="text" class="form-input form-name" id="main-name" placeholder="Введите имя" ng-model="names['catalog']"></input>
+        <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Введите телефон" ng-model="phones['catalog']"></input>
+        <input type="text" class="form-input form-mail" id="main-mail" placeholder="Введите e-mail" ng-model="emails['catalog']"></input>
         <input type="button" id="main-name" class="button button-yellow" value="ЗАКАЗАТЬ КАТАЛОГ!" ng-click="sendData(this,'Запрос каталога','catalog')"></input>
       </div>
     </div>
@@ -386,9 +386,9 @@
   <div class="popup" id="door-default" ng-show="showLeadPopup">
     <div class="block lead-popup">
       <span ng-bind-html="showHtml(leadPopupText)"></span>
-      <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['popup']"></input>
-      <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['popup']"></input>
-      <input type="text" class="form-input form-mail" id="main-mail" placeholder="Ваш e-mail" ng-model="emails['popup']"></input>
+      <input type="text" class="form-input form-name" id="main-name" placeholder="Введите имя" ng-model="names['popup']"></input>
+      <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Введите телефон" ng-model="phones['popup']"></input>
+      <input type="text" class="form-input form-mail" id="main-mail" placeholder="Введите e-mail" ng-model="emails['popup']"></input>
       <input type="button" id="main-name" class="button button-yellow" value="{{leadPopupButtonText}}" ng-click="sendData(this, currentWhere, 'popup')"></input>
     </div>
     <div class="closer" ng-click="closeAllPopups()">
@@ -397,11 +397,11 @@
 
   <div class="popup" id="door-default" ng-show="showInOneClick">
     <div class="block lead-popup">
-      Вы выбрали дверь "{{selectedDoor.short_title}}"!
-      <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['oneclick']"></input>
-      <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['oneclick']"></input>
-      <input type="text" class="form-input form-mail" id="main-mail" placeholder="Ваш e-mail" ng-model="emails['oneclick']"></input>
-      <input type="button" id="main-name" class="button button-yellow" value="УЗНАТЬ БОЛЬШЕ!" ng-click="sendData(this, 'Запрос информации, дверь '+selectedDoor.short_title, 'oneclick')"></input>
+      Вы выбрали дверь "{{selectedDoor.short_title}}"!<br>Узнайте больше, проконсультировавшись со специалистом!
+      <input type="text" class="form-input form-name" id="main-name" placeholder="Введите имя" ng-model="names['oneclick']"></input>
+      <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Введите телефон" ng-model="phones['oneclick']"></input>
+      <input type="text" class="form-input form-mail" id="main-mail" placeholder="Введите e-mail" ng-model="emails['oneclick']"></input>
+      <input type="button" id="main-name" class="button button-yellow" value="УЗНАТЬ БОЛЬШЕ" ng-click="sendData(this, 'Запрос информации, дверь '+selectedDoor.short_title, 'oneclick')"></input>
     </div>
     <div class="closer" ng-click="closeAllPopups()">
     </div>
