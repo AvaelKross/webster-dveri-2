@@ -308,7 +308,7 @@ input[type='button'] {
 }
 
 .left-column {
-  width: 450px;
+  width: 460px;
   float: left;
 }
 
@@ -492,9 +492,7 @@ input[type='button'] {
 }
 
 .door:hover img {
-  height: 345px;
-  width: 136px;
-  margin-bottom: -14px;
+  -webkit-transform: scale(1.1);
 }
 
 .door img {
@@ -503,6 +501,7 @@ input[type='button'] {
   width: 124px;
   cursor: pointer;
   box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+  -webkit-backface-visibility: hidden;
 }
 
 .door.selected {
@@ -510,9 +509,7 @@ input[type='button'] {
 }
 
 .door.selected img {
-  width: 146px !important;
-  height: 373px !important;
-  margin-bottom: -28px !important;
+  -webkit-transform: scale(1.1777);
 }
 
 .door input {

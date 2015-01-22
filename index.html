@@ -43,9 +43,9 @@
     <div class="wrapper">
       <ul class="menu">
         <li><a href="#catalog-anchor">Каталог дверей</a></li><li>
-        <a href="#lead1-anchor">Акции месяца</a></li><li>
+        <a href="#advices-anchor">Советы экспертов</a></li><li>
         <a href="#reviews-anchor">Отзывы клиентов</a></li><li style="background-color: #ffd200;">
-        <a href="#advices-anchor" style="color: black !important;">Советы экспертов</a></li><li class="menu-phone">
+        <a href="#lead1-anchor" style="color: black !important;">Акции месяца</a></li><li class="menu-phone">
         <a href="tel: +73432882684" style="color: black !important;">+7 (343) 288-26-84</a></li>
     </div>
   </div>
@@ -65,16 +65,16 @@
           <ul>
             <li style="list-decoration: none; margin-left: -16px; margin-top: -5px; margin-bottom: 5px; background: none; font-weight: 400;">Закажите двери не вставая с дивана!</li>
             <li>Организуем бесплатный замер</li>
-            <li>Изготовим двери за 5 дней</li>
-            <li>Привезем и выполним монтаж</li>
+            <li>Изготовим и привезём за 7 дней</li>
+            <li>Установим двери и уберём весь мусор</li>
           </ul>
         </div>
         <div class="right-column cloudy">
           <div class="form">
             Отправьте заявку на<br>бесплатный каталог
-            <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['main']"></input>
-            <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон*" ng-model="phones['main']"></input>
-            <input type="text" class="form-input form-mail" id="main-mail" placeholder="Ваш e-mail@" ng-model="emails['main']"></input>
+            <input type="text" class="form-input form-name" id="main-name" placeholder="Введите имя" ng-model="names['main']"></input>
+            <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Введите телефон*" ng-model="phones['main']"></input>
+            <input type="text" class="form-input form-mail" id="main-mail" placeholder="Введите e-mail@" ng-model="emails['main']"></input>
             <input type="button" id="main-name" class="button button-yellow" value="ПОЛУЧИТЬ КАТАЛОГ!" ng-click="sendData(this,'главный экран-вызов замерщика', 'main')"></input>
 
             <div class="politic" ng-click="openPolitics()">Политика конфидециальности</div>
@@ -240,7 +240,7 @@
             <div class="colors">
               <div class="color" ng-repeat="color in selectedDoor.colors">
                 <img ng-src="images/colors/{{colors[color.key].pic_url}}" ng-click="selectedDoor.selected_color = color.pic_url" ng-style="{'cursor': color.pic_url=='' ? 'defaut' : 'pointer'}" />
-                <div style="margin-right: 3px; margin-top: -18px; color: white; margin-bottom:8px; ">{{colors[color.key].name}}</div>
+                <div style="width:95px; margin-top: -18px; color: white; margin-bottom:8px; ">{{colors[color.key].name}}</div>
               </div>
             </div>
           </div>

@@ -117,19 +117,19 @@ dveri.controller('MainCtrl', function ($scope, $sce, $location, $http) {
       selected_color: "Форте ч.с. венге.jpg"},
 
 
-      {title: "Межкомнатная дверь из массива, модель Piano", 
-      short_title: "Piano", filling: "массив", cover: "ПВХ",
+      {title: "Межкомнатная дверь из массива, модель Belanchino", 
+      short_title: "Belanchino", filling: "массив", cover: "ПВХ",
       opening: "универсальное", set: "коробка, комплект наличников", 
-      sizes: "ширина 600, 700, 800, 900* мм. <br>высота 2010 мм.<br>*Дверь размером 900 мм рассчитывается по дополнительной цене.", polotno_price: "5030p", polotno_and_montage_price: "7030p",
-       colors: [{key: "venge", 
-      pic_url: "Пиано венге.jpg"},
+      sizes: "ширина 600, 700, 800, 900* мм. высота 2010 мм.<br>*Дверь размером 900 мм рассчитывается по дополнительной цене.", polotno_price: "4610p", polotno_and_montage_price: "6610p",
+      colors: [{key: "noche_kremone", 
+      pic_url: "беланчино Ноче кремоне.jpg"},
+      {key: "venge", 
+      pic_url: "беланчино Венге.jpg"},
       {key: "milky_dub", 
-      pic_url: "Пиано дуб молочный.jpg"},
-      {key: "noche_kremone", 
-      pic_url: "Пиано ноче кремоне.jpg",
-      }],
-      selected_color: "Пиано венге.jpg"
-      },
+      pic_url: "беланчино Дуб молочный.jpg"}],
+      room: "беланчино.jpg",
+      selected_color: "беланчино Ноче кремоне.jpg"
+    },
 
 
       {title: "Межкомнатная дверь из массива, модель Primo Ч.С.", 
