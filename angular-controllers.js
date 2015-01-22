@@ -153,12 +153,12 @@ dveri.controller('MainCtrl', function ($scope, $sce, $location, $http) {
         polotno_price: "5030p", 
         polotno_and_montage_price: "7030p",
         colors: [
-          {key: "venge", pic_url: "Эль порте венге.jpg"},
-          {key: "noche_kremone", pic_url: "Эль порте ноче кремоне.jpg"},
-          {key: "milky_dub", pic_url: "Эль порте дуб молочный.jpg"}
+          {key: "venge", pic_url: "Эль Порте венге.jpg"},
+          {key: "noche_kremone", pic_url: "Эль Порте ноче кремоне.jpg"},
+          {key: "milky_dub", pic_url: "Эль Порте дуб молочный.jpg"}
         ],
         room: "эль порте.jpg",
-        selected_color: "Эль порте венге.jpg"
+        selected_color: "Эль Порте венге.jpg"
       }
   ]
 
