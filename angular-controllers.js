@@ -110,9 +110,9 @@ dveri.controller('MainCtrl', function ($scope, $sce, $location, $http) {
        colors: [{key: "venge", 
       pic_url: "Форте ч.с. венге.jpg"},
       {key: "noche_kremone", 
-      pic_url: "Форте ч.с. ноче кремоне.jpg"},
+      pic_url: "форте ч.с. ноче кремоне.jpg"},
       {key: "milky_dub", 
-      pic_url: "форте ч.с. дуб молочный.jpg"}],
+      pic_url: "Форте ч.с. дуб молочный.jpg"}],
       room: "форте.jpg",
       selected_color: "Форте ч.с. венге.jpg"},
 
@@ -139,9 +139,9 @@ dveri.controller('MainCtrl', function ($scope, $sce, $location, $http) {
        colors: [{key: "shamp_dub", 
       pic_url: "Примо ч.с дуб шампань.jpg"},
       {key: "venge", 
-      pic_url: "примо ч.с. венге.jpg"},
+      pic_url: "Примо ч.с. венге.jpg"},
       {key: "noche_kremone", 
-      pic_url: "примо ч.с. ноче кремоне.jpg"}],
+      pic_url: "Примо ч.с. ноче кремоне.jpg"}],
       room: "примо.jpg",
       selected_color: "Примо ч.с дуб шампань.jpg"},
 
