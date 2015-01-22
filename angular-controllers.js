@@ -67,13 +67,13 @@ dveri.controller('MainCtrl', function ($scope, $sce, $location, $http) {
       opening: "универсальное", set: "коробка, комплект наличников", 
       sizes: "ширина 600, 700, 800, 900* мм. <br>высота 2010 мм.<br>*Дверь размером 900 мм рассчитывается по дополнительной цене.", polotno_price: "4610p", polotno_and_montage_price: "6610p",
        colors: [{key: "milky_dub", 
-      pic_url: "Адажио Дуб молочный.jpg"},
+      pic_url: "Адажио дуб молочный.jpg"},
       {key: "venge", 
-      pic_url: "Адажио Венге.jpg"},
+      pic_url: "Адажио венге.jpg"},
       {key: "noche_kremone", 
-      pic_url: "Адажио Ноче кремоне.jpg"}],
+      pic_url: "Адажио ноче кремоне.jpg"}],
       room: "адажио.jpg",
-      selected_color: "Адажио Дуб молочный.jpg"},
+      selected_color: "Адажио дуб молочный.jpg"},
 
 
       {title: "Межкомнатная дверь из массива, модель Legro ДО", 
@@ -85,7 +85,7 @@ dveri.controller('MainCtrl', function ($scope, $sce, $location, $http) {
       {key: "milky_dub", 
       pic_url: "Легро ДО дуб молочный.jpg"},
       {key: "noche_kremone", 
-      pic_url: "Легро ДО Ноче кремоне.jpg"}],
+      pic_url: "Легро ДО ноче кремоне.jpg"}],
       room: "легро.jpg",
       selected_color: "Легро ДО венге.jpg"},
 
@@ -95,26 +95,26 @@ dveri.controller('MainCtrl', function ($scope, $sce, $location, $http) {
       opening: "универсальное", set: "коробка, комплект наличников", 
       sizes: "ширина 600, 700, 800, 900* мм. <br>высота 2010 мм.<br>*Дверь размером 900 мм рассчитывается по дополнительной цене.", polotno_price: "5030p", polotno_and_montage_price: "7030p",
        colors: [{key: "milky_dub", 
-      pic_url: "Маэстро Дуб молочный.jpg"},
+      pic_url: "Маэстро дуб молочный.jpg"},
       {key: "venge", 
-      pic_url: "Маэстро Венге.jpg"},
+      pic_url: "Маэстро венге.jpg"},
       {key: "noche_kremone", 
-      pic_url: "Маэстро Ноче кремоне.jpg"}],
+      pic_url: "Маэстро ноче кремоне.jpg"}],
       room: "маэстро.jpg",
-      selected_color: "Маэстро Дуб молочный.jpg"},
+      selected_color: "Маэстро дуб молочный.jpg"},
 
       {title: "Межкомнатная дверь из массива, модель Forte Ч.С.", 
       short_title: "Forte Ч.С.", filling: "массив", cover: "ПВХ",
       opening: "универсальное", set: "коробка, комплект наличников", 
       sizes: "ширина 600, 700, 800, 900* мм.<br>высота 2010 мм.<br>*Дверь размером 900 мм рассчитывается по дополнительной цене.", polotno_price: "5200p", polotno_and_montage_price: "7200p",
        colors: [{key: "venge", 
-      pic_url: "Форте ч.с. Венге.jpg"},
+      pic_url: "Форте ч.с. венге.jpg"},
       {key: "noche_kremone", 
-      pic_url: "Форте ч.с. Ноче кремоне.jpg"},
+      pic_url: "Форте ч.с. ноче кремоне.jpg"},
       {key: "milky_dub", 
-      pic_url: "форте ч.с. Дуб молочный.jpg"}],
+      pic_url: "форте ч.с. дуб молочный.jpg"}],
       room: "форте.jpg",
-      selected_color: "Форте ч.с. Венге.jpg"},
+      selected_color: "Форте ч.с. венге.jpg"},
 
 
       {title: "Межкомнатная дверь из массива, модель Piano", 
@@ -122,17 +122,14 @@ dveri.controller('MainCtrl', function ($scope, $sce, $location, $http) {
       opening: "универсальное", set: "коробка, комплект наличников", 
       sizes: "ширина 600, 700, 800, 900* мм. <br>высота 2010 мм.<br>*Дверь размером 900 мм рассчитывается по дополнительной цене.", polotno_price: "5030p", polotno_and_montage_price: "7030p",
        colors: [{key: "venge", 
-      pic_url: "Пиано Венге.jpg"},
+      pic_url: "Пиано венге.jpg"},
       {key: "milky_dub", 
-      pic_url: "Пиано Дуб молочный.jpg"},
+      pic_url: "Пиано дуб молочный.jpg"},
       {key: "noche_kremone", 
-      pic_url: "Пиано Ноче кремоне.jpg",
+      pic_url: "Пиано ноче кремоне.jpg",
       }],
-      selected_color: "Пиано Венге.jpg"
+      selected_color: "Пиано венге.jpg"
       },
-
-
-
 
 
       {title: "Межкомнатная дверь из массива, модель Primo Ч.С.", 
@@ -142,9 +139,9 @@ dveri.controller('MainCtrl', function ($scope, $sce, $location, $http) {
        colors: [{key: "shamp_dub", 
       pic_url: "Примо ч.с дуб шампань.jpg"},
       {key: "venge", 
-      pic_url: "примо ч.с. Венге.jpg"},
+      pic_url: "примо ч.с. венге.jpg"},
       {key: "noche_kremone", 
-      pic_url: "примо ч.с. Ноче кремоне.jpg"}],
+      pic_url: "примо ч.с. ноче кремоне.jpg"}],
       room: "примо.jpg",
       selected_color: "Примо ч.с дуб шампань.jpg"},
 
@@ -156,12 +153,12 @@ dveri.controller('MainCtrl', function ($scope, $sce, $location, $http) {
         polotno_price: "5030p", 
         polotno_and_montage_price: "7030p",
         colors: [
-          {key: "venge", pic_url: "Эль порте Венге.jpg"},
-          {key: "noche_kremone", pic_url: "Эль порте Ноче кремоне.jpg"},
-          {key: "milky_dub", pic_url: "Эль порте Дуб молочный.jpg"}
+          {key: "venge", pic_url: "Эль порте венге.jpg"},
+          {key: "noche_kremone", pic_url: "Эль порте ноче кремоне.jpg"},
+          {key: "milky_dub", pic_url: "Эль порте дуб молочный.jpg"}
         ],
         room: "эль порте.jpg",
-        selected_color: "Эль порте Венге.jpg"
+        selected_color: "Эль порте венге.jpg"
       }
   ]
 
