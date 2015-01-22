@@ -1,0 +1,579 @@
+<!DOCTYPE html5>
+<html ng-app="dveri">
+<head>
+  <title>Краснодеревшик - Екатеринбург</title>
+  <META content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="fonts.css" type="text/css" rel="stylesheet" />
+  <link href="style.css" type="text/css" rel="stylesheet" />
+  <script src="lib/jquery-1.10.2.min.js"></script>
+  <script src="lib/angular.min.js"></script>
+  <script src="lib/lodash.min.js"></script>
+  <script src="lib/angular-route.min.js"></script>
+  <script src="lib/angular-google-maps.min.js"></script>
+  <script src="lib/jquery.maskedinput.min.js"></script>
+  <script src="angular-controllers.js"></script>
+  <script src="script.js"></script>
+</head>
+<body ng-controller="MainCtrl" scroll>
+  
+  <div id="header">
+    <div class="wrapper">
+      <div class="logo-and-address">
+        <div class="logo">
+          <img src="images/logo.png" />
+          Продажа и монтаж межкомнатных дверей
+        </div>
+        <div class="addresses">
+          <div class="address">
+            Луначарского, 171
+          </div>
+          <div class="address">
+            Белинского, 167
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="somethinglikemenu" ng-show="fixedMenu"></div>
+
+  <div id="menu" ng-class="{fixed:fixedMenu}">
+    <div class="wrapper">
+      <ul class="menu">
+        <li><a href="#catalog-anchor">Каталог дверей</a></li><li>
+        <a href="#lead1-anchor">Акции месяца</a></li><li>
+        <a href="#reviews-anchor">Отзывы клиентов</a></li><li style="background-color: #ffd200;">
+        <a href="#advices-anchor" style="color: black !important;">Советы экспертов</a></li><li class="menu-phone">
+        <a href="tel: +73432882684" style="color: black !important;">+7 (343) 288-26-84</a></li>
+    </div>
+  </div>
+
+  <div id="main">
+    <div class="wrapper">
+      <div class="empty-space" style="height:20px;"></div>
+      <div class="cloudy kp">
+        Межкомнатные двери SYNERGY напрямую с фабрики по цене от 4610 руб!
+        <div class="little">
+          Мы являемся официальными дилерами фабрик «Краснодеревщик», «Свобода», «Вива-Порте», «Акма» и «SYNERGY»
+        </div>
+      </div>
+
+      <div class="main-columns">
+        <div class="left-column cloudy">
+          <ul>
+            <li style="list-decoration: none; margin-left: -16px; margin-top: -5px; margin-bottom: 5px; background: none; font-weight: 400;">Закажите двери не вставая с дивана!</li>
+            <li>Организуем бесплатный замер</li>
+            <li>Изготовим двери за 5 дней</li>
+            <li>Привезем и выполним монтаж</li>
+          </ul>
+        </div>
+        <div class="right-column cloudy">
+          <div class="form">
+            Отправьте заявку на<br>бесплатный каталог
+            <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['main']"></input>
+            <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон*" ng-model="phones['main']"></input>
+            <input type="text" class="form-input form-mail" id="main-mail" placeholder="Ваш e-mail@" ng-model="emails['main']"></input>
+            <input type="button" id="main-name" class="button button-yellow" value="ПОЛУЧИТЬ КАТАЛОГ!" ng-click="sendData(this,'главный экран-вызов замерщика', 'main')"></input>
+
+            <div class="politic" ng-click="openPolitics()">Политика конфидециальности</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="procs">
+    <div class="wrapper columns">
+      <div class="column" style="width:360px; padding-left:40px">
+        <div class="proc">
+          <div class="proc-pic" style="background-position:0px 0px;"></div>
+          <span class="proc-text">2 шоу-рума<br>в центре города</span>
+        </div>
+        <div class="proc">
+          <div class="proc-pic" style="background-position:0px -100px;"></div>
+          <span class="proc-text">Продукция с европейскими<br>сертификатами качества</span>
+        </div>
+      </div>
+      <div class="column" style="width: 180px; padding-left:20px; height: 275px;">
+        <img src="images/logo-mini.png" style="margin-top: 70px;" />
+      </div>
+      <div class="column" style="width:330px; padding-right:30px;">
+        <div class="proc">
+          <div class="proc-pic right" style="background-position:-100px 0px;"></div>
+          <span class="proc-text">Профессиональные<br>бригады монтажников</span>
+        </div>
+        <div class="proc">
+          <div class="proc-pic right" style="background-position:-100px -100px;"></div>
+          <span class="proc-text">2 000 дверей<br>в наличии на складе</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="advances">
+    <div class="wrapper columns">
+      <div class="title">ПРЕИМУЩЕСТВА ДВЕРЕЙ SINERGY</div>
+      <div class="column" class="advances-list" style="margin-left: 25px; width: 310px">
+        <div class="advance" style="height:175px;">
+          <div class="advance-icon" style="background-position: 0px -40px;height:35px;"></div>
+          <div class="advance-title">Открывание в любую сторону</div>
+          <div class="advance-subtitle">Слева на право и справа на лево. Определяется в момент установки.</div>
+        </div>
+        <div class="advance" style="height:220px;">
+          <div class="advance-icon" style="background-position: -40px -40px;height: 48px;"></div>
+          <div class="advance-title">Многослойный материал CPL (пластик низкого давления)</div>
+          <div class="advance-subtitle">Устойчив к царапинам, влаге и высоким температурам. Подходит для ванных комнат!</div>
+        </div>
+        <div class="advance">
+          <div class="advance-icon" style="background-position: -80px -40px;height:44px;"></div>
+          <div class="advance-title">Замок и петли установлены в заводских условиях</div>
+          <div class="advance-subtitle">– существенно влияет на качество установки<br>– снижает стоимость установки</div>
+        </div>
+      </div>
+      <div class="column advances-picture">
+        <img src="images/advances-door.jpg"/>
+      </div>
+      <div class="column" class="advances-list" style="margin-left:80px; width:265px;">
+        <div class="advance" style="height: 144px;">
+          <div class="advance-icon" style="background-position: 0px 0px;"></div>
+          <div class="advance-title">Тепло и тихо!</div>
+          <div class="advance-subtitle">Утеплитель - по всему периметру коробки.</div>
+        </div>
+        <div class="advance" style="height: 144px;">
+          <div class="advance-icon" style="background-position: -40px 0px;height: 36px;"></div>
+          <div class="advance-title">3х-сторонний фальц</div>
+          <div class="advance-subtitle">Закрывает все возможные зазоры между коробкой и дверью.</div>
+        </div>
+        <div class="advance" style="height: 144px;">
+          <div class="advance-icon" style="background-position: -80px 0px;height: 38px;"></div>
+          <div class="advance-title">Ударопрочная кромка</div>
+          <div class="advance-subtitle">Надежно защищает торцы. Прочное покрытие лаками UV отвержения.</div>
+        </div>
+        <div class="advance" style="height: 144px;">
+          <div class="advance-icon" style="background-position: -120px 0px;height: 38px;"></div>
+          <div class="advance-title">Экологичность материала</div>
+          <div class="advance-subtitle">Нет запаха и токсичных выделений. Безопасны для вашего дома.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="opening-types">
+    <div class="wrapper">
+      <div class="title">ТИПЫ ОТКРЫВАНИЯ ДВЕРЕЙ</div>
+      <div class="columns">
+        <div class="column" style="width: 85px; height: 10px;"></div>
+        <div class="column" style="padding-left: 30px; width: 240px;">
+          Стандартные<br>распашные двери
+        </div>
+        <div class="column">
+          Двустворчатые<br>ассиметричные двери
+        </div>
+        <div class="column">
+          Двустворчатые<br>симетричные двери
+        </div>
+      </div>
+      <div style="width: 960px; text-align:center; font-size: 18px; font-weight: 400; margin-top:320px;">ОТКРЫВАНИЕ В ЛЮБУЮ СТОРОНУ:</div>
+      <div class="columns" style="margin-top: 10px;">
+        <div class="column" style="width: 330px; text-align: center;">
+          ПРАВОЕ ОТКРЫВАНИЕ
+        </div>
+        <div class="column" style="width: 330px;"></div>
+        <div class="column" style="width: 340px; text-align: center;">
+          ЛЕВОЕ ОТКРЫВАНИЕ
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="lead-old">
+    <div class="wrapper columns">
+      <div class="column lead-old-text" style="width: 210px; padding-top: 50px;">
+      </div>
+      <div class="column lead1-text" style="width: 570px; padding-top: 35px; text-align:center;">
+        ЗАКАЖИТЕ БЕСПЛАТНЫЙ<BR>КАТАЛОГ ПО ПОЧТЕ<br><br>ИЛИ
+      </div>
+      <div class="column lead-old-form">
+        <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['catalog']"></input>
+        <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['catalog']"></input>
+        <input type="text" class="form-input form-mail" id="main-mail" placeholder="Ваш e-mail" ng-model="emails['catalog']"></input>
+        <input type="button" id="main-name" class="button button-yellow" value="ЗАКАЗАТЬ КАТАЛОГ" ng-click="sendData(this,'Запрос каталога','catalog')"></input>
+      </div>
+    </div>
+  </div>
+
+  <div id="catalog-anchor" style="position:relative; margin-top:-35px; height:35px"></div>
+  <div id="catalog">
+    <div class="wrapper">
+      <div class="title">Выберите самую популярную</div>
+      <ul class="select-type">
+        <li ng-repeat="type in types" ng-click="changeType(type.key)" ng-bind-html="showHtml(type.title)"></li>
+      </ul>
+      <ul class="doors">
+        <li class="door" ng-repeat="door in doors[selectedType]">
+          <div style="background: url('images/mini-dveri.jpg') no-repeat;" ng-style="{'background-position': door.position, 'cursor':'pointer'}" class="mini-door-img" ng-click="openDoorPopup(door)"></div>
+          <div class="info">
+            {{door.type}}<br>
+            {{door.brand}}<br>
+            {{door.model}}<br>
+            <br>
+            <span ng-if="door.color">Цвет: {{colors[door.color].name}}<br></span>
+            <span ng-if="door.cover">Покрытие: {{door.cover}}<br></span>
+            <br>
+            Размеры полотна: {{door.sizes_width}}<br>
+            <br>
+            <span ng-if="door.price_pol">Цена полотна: {{door.price_pol}} р.<br></span>
+            Цена с комплектом: {{door.price_set}} р.
+          </div>
+          <div class="buttons">
+            <input type="button" class="button button-orange" value="Купить в один клик" ng-click="openInOneClick(door)">
+            <input type="button" class="button button-grey" value="Подробнее" ng-click="openDoorPopup(door)">
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="lead1-anchor" style="position:relative; margin-top:-35px; height:35px"></div>
+  <!-- <div id="discount">
+    <div class="wrapper">
+      <div class="discount-title">ТОЛЬКО В ДЕКАБРЕ</div>
+      <div class="discount-subtitle">СКИДКА 2015 руб. С КАЖДОГО КОМПЛЕКТА ДВЕРЕЙ*</div>
+      <div class="columns">
+        <div class="column for-you">
+          Для вас мы:
+          <ul>
+            <li>Организуем доставку</li>
+            <li>Выполним установку</li>
+            <li>Произведем сборку</li>
+          </ul>
+        </div>
+        <div class="column" style="float: right;margin-top:25px;margin-right: 75px;">
+          <div class="cloudy discount-form">
+            Оставить заявку на участие в акции
+            <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['discount']"></input>
+            <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['discount']"></input>
+            <input type="button" id="main-name" class="button button-yellow" value="УЧАСТВОВАТЬ В АКЦИИ!" ng-click="sendData(this,'акция','discount')"></input>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div id="lead1">
+    <div class="wrapper columns">
+      <div class="column lead1-text" style="width: 210px; padding-top: 50px;">
+        <img src="images/iphone.png" style="margin-top:-80px;">
+      </div>
+      <div class="column lead1-text" style="margin-left: 30px; width: 518px; padding-top: 35px; text-align:center;">
+        <div class="big-letters">
+          <span style="color: red">Получи iPhone 6*</span><br>за покупку дверей<br>до 28 февраля!
+        </div>
+        <div class="little-letters">*пожалуйста, узнавайте все подробности у менеджеров</div>
+      </div>
+      <div class="column lead1-form" style="height:361px; margin-top:2px; width:242px; background-color:#858585; text-align: center; color: white; padding-top:0px;">
+        <div style="font-size: 18px; margin-top: 80px; margin-bottom: 15px; font-weight: 400;">Отправить заявку<br>на участие в акции<br></div>
+        <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['catalog']"></input>
+        <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['catalog']"></input>
+        <input type="button" id="main-name" class="button button-red" value="ХОЧУ УЧАСТВОВАТЬ!" style="margin-top: 15px;" ng-click="sendData(this,'Запрос каталога','catalog')"></input>
+      </div>
+    </div>
+  </div>
+
+  <div id="reviews-anchor" style="position:relative; margin-top:-35px; height:35px"></div>
+  <div id="reviews">
+    <div class="wrapper">
+      <div class="title">Вот, что о нас говорят клиенты</div>
+      <div class="review" ng-repeat="review in reviews">
+        <div class="review-photo">
+          <div class="review-face" ng-style="{'background-position': review.pic.position}"></div>
+          <div ng-bind-html="showHtml(review.pic.descr)" class="comment"></div>
+        </div>
+        <div class="review-text" ng-bind-html="showHtml(review.text)"></div>
+        <div class="review-ad">
+          <div class="ad-pics">
+            <img ng-src="images/интерьеры/{{review.ad.cover_pic}}" class="cover-pic" />
+            <div class="small-pics">
+              <img ng-src="images/интерьеры/{{small_pic}}" ng-repeat="small_pic in review.ad.pics" ng-click="review.ad.cover_pic = small_pic"/>
+            </div>
+          </div>
+          <div class="ad-text">
+            <div ng-bind-html="showHtml(review.ad.text)" class="review-ad-text"></div>
+            <input type="button" class="button button-yellow" value="Хочу так же!" ng-click="openLeadPopup('Запрос интерьера, как у '+review.pic.descr)">
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="clear" style="clear: both;"></div>
+  </div>
+
+
+  <div id="advices-anchor" style="position:relative; margin-top:-15px; height:15px"></div>
+  <div id="advices">
+    <div class="wrapper">
+      <div class="title">Советы по выбору и монтажу дверей от наших экспертов</div>
+      <div class="advice">
+        <div class="advice-photo">
+          <div class="advice-face" style="background-position: 0px 0px"></div>
+          <div class="advice-comment">Моргунова Анастасия,<br>дизайнер интерьеров</div>
+        </div>
+        <div class="advice-text">
+          <div class="advice-title">Советы по выбору дверей</div>
+          <ul>
+            <li>Подбирайте двери уже после того, как определитесь с мебелью.</li>
+            <li>Не пугайтесь контрастов - светлые двери в темном интерьере станут его изюминкой.</li>
+            <li>Экспериментируйте - например, стеклянные двери визуально увеличат пространство.</li>
+          </ul>
+        </div>
+        <input type="button" class="button button-green" value="Заказать консультацию дизайнера" ng-click="openLeadPopup('Запрос консультации дизайнера')">
+      </div>
+      <div class="advice">
+        <div class="advice-photo">
+          <div class="advice-face" style="background-position: -196px 0px"></div>
+          <div class="advice-comment">Татаринов Владимир,<br>руководитель службы монтажа</div>
+        </div>
+        <div class="advice-text">
+          <div class="advice-title">Советы по монтажу</div>
+          <ul>
+            <li>Производите монтаж дверей в последнюю очередь.</li>
+            <li>Позаботьтесь о размерах проёма до начала чистовой отделки помещения.</li>
+            <li>Универсальная высота проёма – 2,08м, при такой высоте дверная коробка всегда перекроется наличником.</li>
+          </ul>
+        </div>
+        <input type="button" class="button button-green" value="Заказать консультацию монтажника" ng-click="openLeadPopup('Запрос консультации монтажника')">
+      </div>
+    </div>
+    <div class="clear" style="clear: both;"></div>
+  </div>
+
+  <div id="map" style="padding-top: 50px;">
+    <ui-gmap-google-map center='map.center' zoom='map.zoom' options="map.options">
+      <ui-gmap-marker
+        idKey=0
+        coords='{ latitude: 56.834806, longitude: 60.623017 }'
+        options="{labelContent: 'Краснодеревщик,<br>Салон Дверей', labelClass: 'label'}"
+        >
+      </ui-gmap-marker>
+      <ui-gmap-marker
+        idKey=0
+        coords='{ latitude: 56.802512, longitude: 60.628845 }'
+        options="{labelContent: 'Краснодеревщик,<br>Салон Дверей', labelClass: 'label'}"
+        >
+      </ui-gmap-marker>
+    </ui-gmap-google-map>
+    
+    <div class="wrapper">
+      <div class="title">Мы будем рады угостить Вас кофе или чаем со сладостями в наших офисах</div>
+      <div class="map-info">
+        <b>ООО «Альдеза»</b><br>
+        <b>ОГРН:</b> 1116671008651<br>
+        <b>ИНН:</b> 6671356447<br>
+        <b>КПП:</b> 667101001<br>
+        <b>Адрес:</b> 620075,<br>
+        г. Екатеринбург,<br>
+        ул. Луначарского, 171<br>
+        <br>
+        <b>Телефон:</b> <u>+7(343)288-26-84</u><br>
+        <input type="button" value="ЗАКАЗАТЬ ЗВОНОК" class="button" ng-click="openLeadPopup('Заказ звонка')">
+      </div>
+    </div>
+  </div>
+
+  <div id="header" class="footer">
+    <div class="wrapper">
+      <div class="logo-and-address">
+        <div class="logo">
+          <img src="images/logo.png" />
+          Продажа и монтаж межкомнатных дверей
+        </div>
+        <div class="addresses">
+          <div class="address">
+            Луначарского, 171
+          </div>
+          <div class="address">
+            Белинского, 167
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup" id="door-default" ng-show="showDefaultDoorPopup">
+    <div class="block default-door">
+      <div class="door-title">{{selectedDoor.type}} {{selectedDoor.brand}}, {{selectedDoor.model}}, цвет {{colors[selectedDoor.color].name}}</div>
+      <div class="columns">
+        <div class="column" style="width: 200px">
+          <img ng-src="images/doors/{{selectedDoor.selected_cover_img}}" class="door-cover-img" />
+          <div style="font-size: 13px;">Цена c комплектом: {{selectedDoor.price_set}} р.<br>
+          Цена с монтажом: <!--{{selectedDoor.price_mont}}-->{{makeMontPrice(selectedDoor)}} р.</div>
+        </div>
+        <div class="column info" style="width: 292px; height: 250px; padding-right: 10px;">
+          Производитель: «{{selectedDoor.brand}}», {{selectedDoor.brand_city}}<br>
+          <br>
+          <span ng-if="selectedDoor.filling">
+            Заполнение: {{selectedDoor.filling}}<br>
+            <br>
+          </span>
+          <span ng-if="selectedDoor.cover">
+            Покрытие: {{selectedDoor.cover}}<br>
+            <br>
+          </span>
+          Размеры полотна: 
+            <span ng-if="selectedDoor.sizes_width == 'любые'">любые</span>
+            <span ng-if="selectedDoor.sizes_width != 'любые'">
+              <br>
+              ширина: {{selectedDoor.sizes_width}}<br>
+              высота: {{selectedDoor.sizes_height}}
+            </span>
+          <br><br>
+          Комплектующие: {{selectedDoor.set}}<br><br>
+          <span ng-if="selectedDoor.descr" ng-bind-html="showHtml(selectedDoor.descr)"></span>
+        </div>
+        <div class="column" style="width: 235px; height: 250px;">
+          <div class="door-form">
+            Узнайте о наличии этой модели<br>на складе<br>в нужной Вам расцветке
+            <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['normal-door']"></input>
+            <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['normal-door']"></input>
+            <input type="text" class="form-input form-mail" id="main-mail" placeholder="Ваш e-mail" ng-model="emails['normal-door']"></input>
+            <input type="button" id="main-name" class="button button-yellow" value="Перезвоните мне!" ng-click="sendData(this,'Запрос информации по двери '+selectedDoor.model,'normal-door')"></input>
+          </div>
+        </div>
+        <div class="column" style="height: 133px; width: 540px">
+          Варианты расцветок<span ng-if="selectedType=='glass'"> стекла</span>:
+          <div class="colors">
+            <div class="color" ng-repeat="color in selectedDoor.colors">
+              <img ng-src="images/colors/{{colors[color.key].pic_url}}" ng-click="changeColor(color)" ng-style="{'cursor': color.pic_url=='' ? 'defaut' : 'pointer'}" />
+              <span>{{colors[color.key].name}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="closer" ng-click="closeAllPopups()">
+    </div>
+  </div>
+
+  <div class="popup" id="door-default" ng-show="showPaintDoorPopup">
+    <div class="block paint-door">
+      <div class="door-title">{{selectedDoor.type}} {{selectedDoor.brand}}, {{selectedDoor.model}}
+      <span ng-if="selectedDoor.color">, цвет {{colors[selectedDoor.color].name}}</span></div>
+      <div class="columns">
+        <div class="column" style="width: 185px">
+          <img ng-src="images/doors/{{selectedDoor.selected_cover_img}}" class="door-cover-img" />
+          <div style="font-size: 13px;">Цена c комплектом: {{selectedDoor.price_set}} р.<br>
+          Цена с монтажом: {{selectedDoor.price_mont}} р.</div>
+        </div>
+        <div class="column info" style="width: 274px; height: 350px; padding-right: 10px;">
+          Производитель: «{{selectedDoor.brand}}», {{selectedDoor.brand_city}}<br>
+          <br>
+          <span ng-if="selectedDoor.filling">
+            Заполнение: {{selectedDoor.filling}}<br>
+            <br>
+          </span>
+          <span ng-if="selectedDoor.cover">
+            Покрытие: {{selectedDoor.cover}}<br>
+            <br>
+          </span>
+          Размеры полотна: 
+            <span ng-if="selectedDoor.sizes_width == 'любые'">любые</span>
+            <span ng-if="selectedDoor.sizes_width != 'любые'">
+              <br>
+              ширина: {{selectedDoor.sizes_width}}<br>
+              высота: {{selectedDoor.sizes_height}}
+            </span>
+          <br><br>
+          Комплектующие: {{selectedDoor.set}}<br><br>
+          {{selectedDoor.descript}}<br>
+        </div>
+        <div class="column" style="width: 255px; height: 290px; margin-right: 10px;">
+          <div class="colors" ng-if="selectedDoor.colors.length > 0" style="margin-top:0px;">
+            <div class="color" ng-repeat="color in selectedDoor.colors">
+              <img ng-src="images/colors/{{colors[color.key].pic_url}}" ng-click="changeColor(color)" ng-style="{'cursor': color.pic_url=='' ? 'defaut' : 'pointer'}" />
+              <span>{{colors[color.key].name}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="column" style="width: 235px; height: 290px;">
+          <div class="door-form" style="height: 264px;padding-top: 20px;">
+            Узнайте о наличии этой модели<br>на складе<br>в нужной Вам расцветке
+            <div style="height:15px;"></div>
+            <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['paint-door']"></input>
+            <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['paint-door']"></input>
+            <input type="text" class="form-input form-mail" id="main-mail" placeholder="Ваш e-mail" ng-model="emails['paint-door']"></input>
+            <input type="button" id="main-name" class="button button-yellow" value="Перезвоните мне!" ng-click="sendData(this,'Запрос информации по двери '+selectedDoor.model,'paint-door')"></input>
+          </div>
+        </div>
+        <div class="column" style="height: 50px; width: 540px">
+          Варианты расцветок:<br>
+          {{selectedDoor.paint}}
+        </div>
+        <div class="column" style="height: 124px; width: 237px;margin-top:-26px;margin-left:7px;">
+          <img src="images/RAL.jpg"/>
+        </div>
+      </div>
+    </div>
+    <div class="closer" ng-click="closeAllPopups()">
+    </div>
+  </div>
+
+  <div class="popup" id="door-default" ng-show="showLeadPopup">
+    <div class="block lead-popup">
+      <span ng-bind-html="showHtml(leadPopupText)"></span>
+      <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['popup']"></input>
+      <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['popup']"></input>
+      <input type="text" class="form-input form-mail" id="main-mail" placeholder="Ваш e-mail" ng-model="emails['popup']"></input>
+      <input type="button" id="main-name" class="button button-yellow" value="{{leadPopupButtonText}}" ng-click="sendData(this, currentWhere, 'popup')"></input>
+    </div>
+    <div class="closer" ng-click="closeAllPopups()">
+    </div>
+  </div>
+
+  <div class="popup" id="door-default" ng-show="showInOneClick">
+    <div class="block lead-popup">
+      Вы выбрали дверь "{{selectedDoor.model}}!"
+      <input type="text" class="form-input form-name" id="main-name" placeholder="Ваше имя" ng-model="names['oneclick']"></input>
+      <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Ваш телефон" ng-model="phones['oneclick']"></input>
+      <input type="text" class="form-input form-mail" id="main-mail" placeholder="Ваш e-mail" ng-model="emails['oneclick']"></input>
+      <input type="button" id="main-name" class="button button-yellow" value="ВЫЗВАТЬ ЗАМЕРЩИКА" ng-click="sendData(this, 'Вызов замерщика, дверь '+selectedDoor.model, 'oneclick')"></input>
+    </div>
+    <div class="closer" ng-click="closeAllPopups()">
+    </div>
+  </div>
+
+  <div class="popup" id="door-default" ng-show="showThanks">
+    <div class="block lead-popup">
+      Спасибо! Ожидайте звонка.
+    </div>
+    <div class="closer" ng-click="closeAllPopups()">
+    </div>
+  </div>
+
+  <div class="popup" ng-show="showPolitics">
+    <div class="block politics">
+      Данное соглашение об обработке персональных данных разработано в соответствии с законодательством Российской Федерации.
+      <br><br>
+      Все лица заполнившие сведения, составляющие персональные данные на данном сайте, а также разместившие иную информацию обозначенными действиями подтверждают свое согласие на обработку персональных данных и их передачу оператору обработки персональных данных.
+      <br><br>
+      Под персональными данными Гражданина понимается нижеуказанная информация:
+      <br><br>
+      общая информация (Имя и адрес электронной почты, телефон); посетители сайта направляют свои персональные данные для получения доступа к бесплатным видеоматериалам и/или платным услугам в сфере интернет маркетинга и рекламы.
+      <br><br>
+      Гражданин, принимая настоящее Соглашение, выражают свою заинтересованность и полное согласие, что обработка их персональных данных может включать в себя следующие действия: сбор, систематизацию, накопление, хранение, уточнение (обновление, изменение), использование, уничтожение.
+      <br><br>
+      Гражданин гарантирует: информация, им предоставленная, является полной, точной и достоверной; при предоставлении информации не нарушается действующее законодательство Российской Федерации, законные права и интересы третьих лиц; вся предоставленная информация заполнена Гражданина в отношении себя лично.
+      <br><br>
+      ООО «Альдеза»<br><br>
+      ОГРН: 1116671008651<br>
+      ИНН: 6671356447<br>
+      КПП: 667101001<br>
+      Адрес: 620075, г. Екатеринбург, ул. Луначарского, 171
+    </div>
+    <div class="closer" ng-click="closeAllPopups()">
+    </div>
+  </div>
+
+</body>
+</html>
