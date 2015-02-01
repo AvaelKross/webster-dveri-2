@@ -120,7 +120,7 @@ dveri.controller('MainCtrl', function ($scope, $sce, $location, $http) {
       {title: "Межкомнатная дверь из массива, модель Belanchino", 
       short_title: "Belanchino", filling: "массив", cover: "ПВХ",
       opening: "универсальное", set: "коробка, комплект наличников", 
-      sizes: "ширина 600, 700, 800, 900* мм. высота 2010 мм.<br>*Дверь размером 900 мм рассчитывается по дополнительной цене.", polotno_price: "4610p", polotno_and_montage_price: "6610p",
+      sizes: "ширина 600, 700, 800, 900* мм. <br>высота 2010 мм.<br>*Дверь размером 900 мм рассчитывается по дополнительной цене.", polotno_price: "4610p", polotno_and_montage_price: "6610p",
       colors: [{key: "noche_kremone", 
       pic_url: "беланчино Ноче кремоне.jpg"},
       {key: "venge", 
