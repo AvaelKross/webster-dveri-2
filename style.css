@@ -5,6 +5,7 @@ head,body{
   width:100%;
   font-family: 'Helvetica Neue';
   font-weight: 300;
+  min-width: 1025px;
 }
 
 ul {
@@ -541,7 +542,7 @@ input[type='button'] {
   font-size: 14px;
   width: 100%;
   padding-left: 11px;
-  height: 400px;
+  margin-bottom: 50px;
 }
 
 #catalog .columns {
