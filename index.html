@@ -8,14 +8,33 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="fonts.css" type="text/css" rel="stylesheet" />
   <link href="style.css" type="text/css" rel="stylesheet" />
+  <link rel="stylesheet" href="jquery.bxslider.css">
+  <link href="animate.css" type="text/css" rel="stylesheet" />
   <script src="lib/jquery-1.10.2.min.js"></script>
   <script src="lib/angular.min.js"></script>
   <script src="lib/lodash.min.js"></script>
   <script src="lib/angular-route.min.js"></script>
   <script src="lib/angular-google-maps.min.js"></script>
   <script src="lib/jquery.maskedinput.min.js"></script>
+  
   <script src="angular-controllers.js"></script>
   <script src="script.js"></script>
+
+  <script src="lib/jquery.bxslider.min.js"></script>
+  <script>
+    $(function()
+    {
+        $(".bxslider").bxSlider({
+          auto: true,
+          pause: 5000,
+          autoHover: true,
+          autoDelay: 1000,
+          responsive: false,
+          pager: false,
+          controls: false
+        });
+    });
+  </script>
 </head>
 <body ng-controller="MainCtrl" scroll>
   
@@ -116,23 +135,25 @@
 
   <div id="lead1-anchor" style="position:relative; margin-top:-35px; height:35px"></div>
   <div id="lead1">
-    <div class="wrapper columns">
-      <div class="column lead1-text" style="width: 210px; padding-top: 50px;">
-        <img src="images/iphone.png" style="margin-top:-80px;">
-      </div>
-      <div class="column lead1-text" style="margin-left: 30px; width: 518px; padding-top: 35px; text-align:center;">
-        <div class="big-letters">
-          <span style="color: red">Получи iPhone 6*</span><br>за покупку дверей<br>до 28 февраля!
-        </div>
-        <div class="little-letters">*пожалуйста, узнавайте все подробности у менеджеров</div>
-      </div>
-      <div class="column lead1-form" style="height:361px; margin-top:2px; width:242px; background-color:#858585; text-align: center; color: white; padding-top:0px;">
-        <div style="font-size: 18px; margin-top: 60px; margin-bottom: 15px; font-weight: 400;">Отправить заявку<br>на участие в акции<br></div>
-        <input type="text" class="form-input form-name" id="main-name" placeholder="Введите имя" ng-model="names['event']"></input>
-        <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Введите телефон" ng-model="phones['event']"></input>
-        <input type="text" class="form-input form-mail" id="main-mail" placeholder="Введите e-mail" ng-model="emails['event']"></input>
-        <input type="button" id="main-name" class="button button-red" value="ХОЧУ УЧАСТВОВАТЬ!" style="margin-top: 15px;" ng-click="sendData(this,'Участие в акции (iPhone6)','event')"></input>
-      </div>
+    <div class="wrapper">
+      <ul class="bxslider">
+        <li class="lead1-1">
+          <div class="lead1-form">
+            <div style="font-size: 18px; margin-top: 60px; margin-bottom: 15px; font-weight: 400; color: black;">Отправить заявку,<br>чтобы узнать подробности<br></div>
+            <input type="text" class="form-input form-name" id="main-name" placeholder="Введите имя" ng-model="names['event']"></input>
+            <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Введите телефон" ng-model="phones['event']"></input>
+            <input type="button" id="main-name" class="button button-red" value="УЗНАТЬ ПОДРОБНОСТИ" style="margin-top: 15px;" ng-click="sendData(this,'Участие в акции (нашли двери дешевле? -2%!)','event')"></input>
+          </div>
+        </li>
+        <li class="lead1-2">
+          <div class="lead1-form" style="right:1px;">
+            <div style="font-size: 18px; margin-top: 60px; margin-bottom: 15px; font-weight: 400; color: white;">Отправить заявку,<br>чтобы узнать подробности<br></div>
+            <input type="text" class="form-input form-name" id="main-name" placeholder="Введите имя" ng-model="names['event2']"></input>
+            <input type="text" input-mask class="form-input form-phone" id="main-phone" placeholder="Введите телефон" ng-model="phones['event2']"></input>
+            <input type="button" id="main-name" class="button button-red" value="ХОЧУ ПОДАРОК!" style="margin-top: 15px;" ng-click="sendData(this,'Участие в акции (-6000 до конца апреля)','event2')"></input>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 

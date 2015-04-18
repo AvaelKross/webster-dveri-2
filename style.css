@@ -353,9 +353,10 @@ input[type='button'] {
 }
 
 #lead1 {
-  height: 365px;
-  background-color: black;
-  margin-bottom: 90px;
+  height: 408px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-bottom: 65px;
 }
 
 .lead1-text {
@@ -367,7 +368,27 @@ input[type='button'] {
 }
 
 .lead1-form {
-  padding-top:4px;
+  height: 401px;
+  margin: 0px;
+  right: 13px;
+  position: absolute;
+  top: 30px;
+  /* margin-top: 2px; */
+  width: 242px;
+  /* background-color: #858585; */
+  text-align: center;
+  color: white;
+  padding-top: 0px;
+}
+
+.lead1-1 {
+  background: url(images/lead1-1.jpg);
+  height: 408px;
+}
+
+.lead1-2 {
+  background: url(images/lead1-2.jpg);
+  height: 408px;
 }
 
 #lead1 .big-letters {
