@@ -102,12 +102,12 @@ ul.bxslider {
 /* DIRECTION CONTROLS (NEXT / PREV) */
 
 .bx-wrapper .bx-prev {
-	left: -40px;
+	left: 10px;
 	background: url(images/controls.png) no-repeat 0 -32px;
 }
 
 .bx-wrapper .bx-next {
-	right: -40px;
+	right: 10px;
 	background: url(images/controls.png) no-repeat -43px -32px;
 }
 
@@ -121,7 +121,7 @@ ul.bxslider {
 
 .bx-wrapper .bx-controls-direction a {
 	position: absolute;
-	top: 50%;
+	top: 80%;
 	margin-top: -16px;
 	outline: 0;
 	width: 32px;
