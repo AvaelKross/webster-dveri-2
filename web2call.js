@@ -34,8 +34,7 @@ var Web2Call = function (w2c_obj) {
     //дом кнопки вызова сервиса (маленький телефон что крутится у номера телефона)
     this.pSB = '.w2c_sb'; 
     //id дом уговлого окошка сервиса
-    this.idSH = 'w2cel_showServiceHint'; 
-
+    this.idSH = 'w2cel_showServiceHint';
     // устанавливаем соединение с сокет сервером
     this.initWebSocket();
 
@@ -63,6 +62,10 @@ Web2Call.prototype.makeServiceWindow = function () {
     showServiceHint  += '<div class="w2c_hbody">Возникли вопросы? Мы готовы помочь вам прямо сейчас!</div>';
     showServiceHint  += '</div>';
 
+    showServiceHint = '<div class="hi-icon-effect-8"><div id="' + this.idSH + '"class="hi-icon w2c_h">'
+    showServiceHint += '<img src="images/phone.png" width="50px" height="50px"/>'
+    showServiceHint += '</div></div>'
+
     w2c_jQuery('body').append(showServiceHint);
 
     w2c_jQuery('#' + this.idSH).click(function () {
@@ -71,7 +74,6 @@ Web2Call.prototype.makeServiceWindow = function () {
     });
 
     // задаем тему заголовка окна
-    w2c_jQuery('#' + this.idSH+' .w2c_hhead').css(this.config.theme);
 
     // создаем крутящуюсю трубку у номера телефона на сайте
     w2c_jQuery(this.config.phone_div).prepend(showServiceBtn);
@@ -135,12 +137,6 @@ Web2Call.prototype.showServiceWindow = function () {
     'use strict';
     this.cLog('showServiceWindow');
     w2c_jQuery('#' + this.idSH).show();
-    w2c_jQuery('#' + this.idSH).animate({'opacity': 0.4}, 1000).hover(function(){
-            w2c_jQuery(this).animate({ opacity: 1 }, 100);
-        }, function() {
-            w2c_jQuery(this).animate({ opacity: 0.4 }, 100);
-        });
-    ;;
     w2c_jQuery(this.pSB).animate({'opacity': 1}, 1000);
 };
 
@@ -157,13 +153,16 @@ Web2Call.prototype.makeMainWindow = function () {
     var w2c_container = '<div id="w2c_container" class="w2c_c"></div>',
         html = ' <div id="w2cel_showServiceWindow" class="w2c_v">' +
             '<div class="headstep">' +
-            '<img src="'+this.config.title_icon+'"><span style="">КОНСУЛЬТАНТ</span>'  +
+            '<img src="'+this.config.title_icon+'"><span style="">Мы можем перезвонить вам прямо сейчас!</span>'  +
             '</div>' +
             '<div class="bodystep">' +
             ' <div class="onestep">'  +
             //'     <!--<div id="companyLogo" style="height:90px; width:100%; text-align:center;">'  +
             //'     <img src="http://mgmn.alltel24.ru/static/pic/alltellogo2.png" style="height:100%"></div>-->'  +
-            '     <p class="descr">Возникли вопросы? Мы готовы вам помочь прямо сейчас! Просто оставьте свой номер телефона и мы вам позвоним!</p>'  +
+            '<div class="manager">' +
+            '  <img src="images/w2c-face.png"/>' +
+            '  <div class="descr">Менеджер Анатолий</div>'  +
+            '</div>' +
             '     <form>'  +
             '         <label for="w2c_clientNum">Ваш номер :</label><input type="text" class="clientNum" id="w2c_clientNum" placeholder="8-(___)-___-__-__" tabindex="0">'  +
             //'         <!--<p>Вы готовы принять звонок? Тогда нажмите кнопку ниже!</p>-->'  + 
@@ -182,9 +181,6 @@ Web2Call.prototype.makeMainWindow = function () {
             '     <p id="callState">Соединение с сервисом успешно установлено!</p>'  +
             // '     <!--<a type="button" class="btn btn-danger" id="hideWindow">Закрыть</a>-->'  +
             ' </div>' +
-            '</div>' +
-            '<div id="CR">' +
-            '<a href="http://alltel24.ru/" style="text-decoration: none;color: #9D9D9D;" onclick="window.open(\'http://alltel24.ru/\', \'_blank\'); return false">alltel24.ru - IP телефония</a>' +
             '</div>' +
             '</div>' +
             '<div id="w2cel_showServiceWindowBg" class="w2c_bg"></div>';
@@ -492,3 +488,4 @@ Web2Call.prototype.dTime = function () {
 };
 
 var w2cMain = new Web2Call(w2c_obj);
+w2cMain.makeServiceWindow();

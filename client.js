@@ -109,7 +109,7 @@
         loadJsFile('https://www.google.com/recaptcha/api.js');
         loadJsFile('web2call.js');
         // loadJsFile(w2c_obj.config.js_url);
-        loadCssFile(w2c_obj.config.static_serv+w2c_obj.config.css_url);
+        loadCssFile('w2c.css');
     }
 
     // JSONP.init({
@@ -126,11 +126,11 @@
     JSONP.get(W2C_CLIENT+'/api/web2call', {token:w2c_obj.token}, function(response){
         if (response != 'error'){
             w2c_obj['config'] = response;
-        w2c_obj['config']['debug'] = true;
-         w2c_obj['config']['work_time_from']= 25;
-w2c_obj['config']['work_time_to'] = 0;
-w2c_obj['config']['theme']['background-color'] ='#d50000'            
-loadApp();
+            w2c_obj['config']['debug'] = true;
+            w2c_obj['config']['work_time_from']= 25;
+            w2c_obj['config']['work_time_to'] = 0;
+            w2c_obj['config']['theme']['background-color'] ='#d50000'    
+            loadApp();
         }
     });
 
