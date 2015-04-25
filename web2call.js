@@ -299,7 +299,8 @@ Web2Call.prototype.makeMainWindow = function () {
     w2c_jQuery('#' + this.idSW + ' .clientNum').focus();
 
     //Кнопка дозвона звонок
-    w2c_jQuery('#' + this.idSW + ' #w2cel_callBtn').click(function () {
+    w2c_jQuery('#' + this.idSW + ' #w2cel_callBtn').click(function (e) {
+        e.preventDefault();
         if (w2c_jQuery(this).is('.disabled')) {return false; }
         var config = {
             captcha_verify_key:w2cMain.captcha_verify_key,
@@ -523,4 +524,4 @@ Web2Call.prototype.dTime = function () {
 };
 
 var w2cMain = new Web2Call(w2c_obj);
-//w2cMain.makeServiceWindow();
+w2cMain.makeServiceWindow();
