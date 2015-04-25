@@ -363,9 +363,19 @@ input:focus, .button:focus, a:focus, select:focus, option:focus { outline: none;
 
 #w2c_recaptcha {
   position: absolute;
-  left: 260px;
-  bottom: 85px;
-  width: 230px;
+  left: 259px;
+  bottom: 82px;
+  -webkit-transform: scale(0.77);
+  -moz-transform: scale(0.77);
+  -ms-transform: scale(0.77);
+  -o-transform: scale(0.77);
+  transform: scale(0.77);
+
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  transform-origin: 0 0;
 }
 
 /* widget#3 */
