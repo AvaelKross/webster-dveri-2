@@ -33,28 +33,28 @@ input {
   _:-o-prefocus { width: 202px; height: 16px; } 
 }
 
-::-webkit-input-placeholder { /* WebKit browsers */
+.form-input::-webkit-input-placeholder { /* WebKit browsers */
   font-family: 'Helvetica Neue', sans-serif;
   font-weight: 300;
   color: #a4a4a4;
   font-size: 16px;
   line-height: 15px;
 }
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+.form-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
   font-family: 'Helvetica Neue', sans-serif;
   font-weight: 300;
   color: #a4a4a4;
   font-size: 16px;
   line-height: 15px;
 }
-::-moz-placeholder { /* Mozilla Firefox 19+ */
+.form-input::-moz-placeholder { /* Mozilla Firefox 19+ */
   font-family: 'Helvetica Neue', sans-serif;
   font-weight: 300;
   color: #a4a4a4;
   font-size: 16px;
   line-height: 15px;
 }
-:-ms-input-placeholder { /* Internet Explorer 10+ */
+.form-input:-ms-input-placeholder { /* Internet Explorer 10+ */
   font-family: 'Helvetica Neue', sans-serif;
   font-weight: 300;
   color: #a4a4a4;

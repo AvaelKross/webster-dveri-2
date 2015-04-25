@@ -28,9 +28,9 @@ var Web2Call = function (w2c_obj) {
     this.cLog_raw(w2c_obj);
 
     //id дом попап окна сервиса
-    this.idSW = 'w2cel_showServiceWindow'; 
+    this.idSW = 'form_2calls_wrapper'; 
     //id дом фона попап окна сервиса
-    this.idSWBG = 'w2cel_showServiceWindowBg'; 
+    this.idSWBG = 'w2c_closer'; 
     //дом кнопки вызова сервиса (маленький телефон что крутится у номера телефона)
     this.pSB = '.w2c_sb'; 
     //id дом уговлого окошка сервиса
@@ -55,14 +55,9 @@ Web2Call.prototype.makeServiceWindow = function () {
     }
 
     //ставим кнопочку с трубкой в угол экрана
-    var showServiceHint = '<div id="'  +  this.idSH  +  '" class="w2c_h">',
-        showServiceBtn = '<span id="w2cel_showServiceBtn" class="w2c_sb"><img src="' + this.config.icon + '"></span>';
+    var showServiceBtn = '<span id="w2cel_showServiceBtn" class="w2c_sb"><img src="' + this.config.icon + '"></span>';
 
-    showServiceHint  += '<div class="w2c_hhead"><img src="'+this.config.title_icon+'"><span style="">КОНСУЛЬТАНТ</span></div>';
-    showServiceHint  += '<div class="w2c_hbody">Возникли вопросы? Мы готовы помочь вам прямо сейчас!</div>';
-    showServiceHint  += '</div>';
-
-    showServiceHint = '<div class="hi-icon-effect-8"><div id="' + this.idSH + '"class="hi-icon w2c_h">'
+    var showServiceHint = '<div class="hi-icon-effect-8"><div id="' + this.idSH + '"class="hi-icon w2c_h">'
     showServiceHint += '<img src="images/phone.png" width="50px" height="50px"/>'
     showServiceHint += '</div></div>'
 
@@ -184,9 +179,47 @@ Web2Call.prototype.makeMainWindow = function () {
             '</div>' +
             '</div>' +
             '<div id="w2cel_showServiceWindowBg" class="w2c_bg"></div>';
+    var w2c_container = '<div class="form_2calls_wrapper form_2calls_widget3 form_2calls_wrapper-color1 modal-1" id="form_2calls_wrapper" style="display: block;"></div>';
+    var html = 
+    '<div class="form_2calls_layout">' +
+      '<div class="form_2calls_block">' +
+        '<div class="form_2calls_arrow"></div>' +
+        '<div class="form_2calls_heading">Закажите <br>обратный звонок</div> '+
+        '<div class="form_2calls_desc">Наш менеджер позвонит Вам сразу, как только Вы оставите нам номер.</div>'+
+        '<div id="form_2calls_myFormId">'+
+          ' <div class="onestep">'  +
+          '<form>'+
+            '<div class="form_2calls_b-input">'+
+              '<input type="text" class="form_2calls_input clientNum" placeholder="8-(___)-___-__-__" tabindex="0">'+
+            '</div>'+
+            '<div class="form_2calls_b-button">'+
+              '<button id="w2cel_callBtn" class="form_2calls_button disabled">Введите капчу</button>'+
+            '</div>'+
+            '<div id="w2c_recaptcha"></div>'+
+          '</form>'+
+          '</div>'+
+          '<div id="twostep">'  +
+            '<p id="hello">Шестеренки нашей АТС во всю гудят, пытаясь как можно скорее связать вас с нами.</p>'  +
+            '<p id="clientNum">Ваш номер: </p><a class="btn btn-danger" id="notMyNum">я ошибся, это не мой номер!</a>'  +
+            '<p id="opCount" style="display:none">Доступно операторов: 0</p>'  +
+            '<p id="callState">Соединение с сервисом успешно установлено!</p>'  +
+          '</div>' +
+          '<div class="manager">'+
+            '<div class="manager_shadow"></div>'+
+            '<img src="images/manager-face.jpg" class="form_2calls_manager_img" alt="">'+
+          '</div>'+
+          '<div class="form_2calls_manager_text">'+
+            '<div class="form_2calls_manager_name">Джанго Освобождённый</div>'+
+            '<div class="form_2calls_manager_desc">Менеджер</div>'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="form_2calls_close" id="form_2calls_close">'+
+        '<a id="w2c_closer">&nbsp;</a>'+
+      '</div>'+
+    '</div>';
     w2c_jQuery('body').append(w2c_container);
-    w2c_jQuery('#w2c_container').html(html);
-    w2c_jQuery('#' + this.idSW+' .headstep').css(this.config.theme);
+    w2c_jQuery('#form_2calls_wrapper').html(html);
 
     w2c_jQuery('#' + this.idSW + ' .clientNum').mask("8-(999)-999-99-99", {placeholder: "_"});
 
@@ -275,12 +308,10 @@ Web2Call.prototype.makeMainWindow = function () {
         },
             scrollUp = '';
         if (config.name !== "" && config.phone !== "" && config.phone !== false && config.captcha_verify_key) {
-            w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Звоню...');
             w2cMain.callStart(config); //пошел звонок
-            scrollUp = w2c_jQuery('#w2cel_showServiceWindow .onestep').height() + 40;
+            w2c_jQuery('#' + w2cMain.idSW + ' .onestep').hide();
+            w2c_jQuery('#' + w2cMain.idSW + ' #twostep').show();
             w2c_jQuery('#' + w2cMain.idSW + ' #twostep #clientNum').text('Ваш номер: ' + config.phone);
-
-            w2c_jQuery('#' + w2cMain.idSW + ' .onestep').animate({'margin-top': -scrollUp + 'px'}, 1500);
 
             //program = setInterval(UpdateState,3000);
         } else {
@@ -299,7 +330,7 @@ Web2Call.prototype.makeMainWindow = function () {
 // показываем главное окно, где человек вводит номер телефона
 Web2Call.prototype.showMainWindow = function () {
     'use strict';
-    w2c_jQuery('#w2c_container').show();
+    w2c_jQuery('#form_2calls_wrapper').show();
     w2c_jQuery('#' + this.idSW).focus();
 
     
@@ -311,11 +342,7 @@ Web2Call.prototype.showMainWindow = function () {
 
 Web2Call.prototype.hideMainWindow = function () {
     'use strict';
-    // w2c_jQuery('#' + this.idSWBG).hide();
-    w2c_jQuery('#w2c_container').remove();
-    // W2CFunc.unblurWindow();
-    // w2c_jQuery('#w2c_container').hide(1000, function () { w2c_jQuery('#w2c_container').remove(); });
-    //w2c_jQuery('body').css('overflow-y','scroll');
+    w2c_jQuery('#form_2calls_wrapper').remove();
 };
 
 // var IE=(document.all && !document.addEventListener);
@@ -402,7 +429,11 @@ Web2Call.prototype.initWebSocket = function () {
         case 'callCanceled':
             // W2CFunc.hideMainWindow(); 
             // W2CVars.called = false;
-            w2c_jQuery('#' + w2cMain.idSW + ' .onestep').animate({'margin-top': '0px'}, 1500, function () {w2c_jQuery('#' + w2cMain.idSW + ' #callState').text('Соденинение...'); });
+            w2c_jQuery('#' + w2cMain.idSW + ' #twostep').hide();
+            w2c_jQuery('#' + w2cMain.idSW + ' #callState').text('Соденинение...');
+            w2c_jQuery('#' + w2cMain.idSW + ' .onestep').show();
+
+
             grecaptcha.reset(w2cMain.recapcha_id);
             w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Введите капчу');
             break;
@@ -413,7 +444,11 @@ Web2Call.prototype.initWebSocket = function () {
         w2cMain.cLog('disconnected');
         w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Соединение...');
         w2cMain.socket = undefined;
-        w2c_jQuery('#' + w2cMain.idSW + ' .onestep').animate({'margin-top': '0px'}, 1500, function () {w2c_jQuery('#' + w2cMain.idSW + ' #callState').text('Соденинение...'); });
+        
+        w2c_jQuery('#' + w2cMain.idSW + ' #twostep').hide();
+        w2c_jQuery('#' + w2cMain.idSW + ' #callState').text('Соденинение...');
+        w2c_jQuery('#' + w2cMain.idSW + ' .onestep').show();
+
         grecaptcha.reset(w2cMain.recapcha_id);
         // w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Введите капчу');
         w2cMain.reconnectTimer = setTimeout(function () {
@@ -488,3 +523,4 @@ Web2Call.prototype.dTime = function () {
 };
 
 var w2cMain = new Web2Call(w2c_obj);
+w2cMain.makeServiceWindow();

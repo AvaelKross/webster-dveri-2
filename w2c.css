@@ -116,42 +116,6 @@
   margin: 0px!important;
 }
 
-.w2c_v input[type="text"]::-webkit-input-placeholder { /* WebKit browsers */
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif!important;
-  color: rgb(85, 85, 85);
-  padding: 6px 1px !important;
-  font-size: 20px !important;
-  font-weight: bold !important;
-  margin: 0px!important;
-}
-.w2c_v input[type="text"]:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif!important;
-  color: rgb(85, 85, 85);
-  padding: 4px 6px!important;
-  font-size: 20px;
-  line-height: 15px;
-  margin: 0px!important;
-  font-weight: bold!important;
-}
-.w2c_v input[type="text"]::-moz-placeholder { /* Mozilla Firefox 19+ */
-  font-weight: 300;
-  color: rgb(85, 85, 85);
-  padding: 4px 6px!important;
-  font-size: 20px;
-  line-height: 15px;
-  font-weight: bold!important;
-  margin: 0px!important;
-}
-.w2c_v input[type="text"]:-ms-input-placeholder { /* Internet Explorer 10+ */
-  font-weight: 300;
-  color: rgb(85, 85, 85);
-  padding: 4px 6px!important;
-  font-size: 20px;
-  line-height: 15px;
-  font-weight: bold!important;
-  margin: 0px!important;
-}
-
 .w2c_c .w2c_v label{
     display: inline-block!important;
     max-width: 100%!important;
@@ -312,48 +276,5 @@
 
 .hi-icon-effect-8 .hi-icon:hover {
         background: #ff2629;
-}
-
-@-webkit-keyframes sonarEffect {
-  0% {
-    opacity: 0.3;
-  }
-  40% {
-    opacity: 0.5;
-    box-shadow: 0 0 0 2px rgba(255,255,255,0.1), 0 0 10px 10px #fff, 0 0 0 10px rgba(255,255,255,0.5);
-  }
-  100% {
-    box-shadow: 0 0 0 2px rgba(255,255,255,0.1), 0 0 10px 10px #fff, 0 0 0 10px rgba(255,255,255,0.5);
-    -webkit-transform: scale(1.5);
-    opacity: 0;
-  }
-}
-@-moz-keyframes sonarEffect {
-  0% {
-    opacity: 0.3;
-  }
-  40% {
-    opacity: 0.5;
-    box-shadow: 0 0 0 2px rgba(255,255,255,0.1), 0 0 10px 10px #fff, 0 0 0 10px rgba(255,255,255,0.5);
-  }
-  100% {
-    box-shadow: 0 0 0 2px rgba(255,255,255,0.1), 0 0 10px 10px #fff, 0 0 0 10px rgba(255,255,255,0.5);
-    -moz-transform: scale(1.5);
-    opacity: 0;
-  }
-}
-@keyframes sonarEffect {
-  0% {
-    opacity: 0.3;
-  }
-  40% {
-    opacity: 0.5;
-    box-shadow: 0 0 0 2px rgba(255,255,255,0.1), 0 0 10px 10px #3851bc, 0 0 0 10px rgba(255,255,255,0.5);
-  }
-  100% {
-    box-shadow: 0 0 0 2px rgba(255,255,255,0.1), 0 0 10px 10px #3851bc, 0 0 0 10px rgba(255,255,255,0.5);
-    transform: scale(1.5);
-    opacity: 0;
-  }
 }
 
