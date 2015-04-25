@@ -523,4 +523,4 @@ Web2Call.prototype.dTime = function () {
 };
 
 var w2cMain = new Web2Call(w2c_obj);
-w2cMain.makeServiceWindow();
+//w2cMain.makeServiceWindow();
