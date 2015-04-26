@@ -455,8 +455,24 @@ input:focus, .button:focus, a:focus, select:focus, option:focus { outline: none;
     background:url('./images/western_closer_hover.png') no-repeat left top;
 }
 
-#twostep {
+.onestep {
   display: none;
+}
+
+#twostep {
+  position: absolute;
+  bottom: 90px;
+  color: white;
+  left: 43px;
+}
+
+#twostep p {
+  margin: 0px;
+}
+
+#twostep .form_2calls_b-button {
+  left: 458px !important;
+  top: 5px !important;
 }
 
 #w2c_recaptcha {

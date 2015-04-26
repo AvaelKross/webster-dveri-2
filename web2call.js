@@ -199,9 +199,11 @@ Web2Call.prototype.makeMainWindow = function () {
           '</form>'+
           '</div>'+
           '<div id="twostep">'  +
-            '<p id="hello">Шестеренки нашей АТС во всю гудят, пытаясь как можно скорее связать вас с нами.</p>'  +
-            '<p id="clientNum">Ваш номер: </p><a class="btn btn-danger" id="notMyNum">я ошибся, это не мой номер!</a>'  +
-            '<p id="opCount" style="display:none">Доступно операторов: 0</p>'  +
+            '<p id="hello">Устанавливается соединение...</p>'  +
+            '<p id="clientNum">Ваш номер: </p>'+
+            '<div class="form_2calls_b-button">'+
+              '<button id="notMyNum" class="form_2calls_button">Отмена</button>'+
+            '</div>'+
             '<p id="callState">Соединение с сервисом успешно установлено!</p>'  +
           '</div>' +
           '<div class="manager">'+
