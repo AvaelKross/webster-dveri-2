@@ -455,7 +455,7 @@ input:focus, .button:focus, a:focus, select:focus, option:focus { outline: none;
     background:url('./images/western_closer_hover.png') no-repeat left top;
 }
 
-.onestep {
+#twostep {
   display: none;
 }
 
