@@ -130,33 +130,6 @@
             w2c_obj['config']['work_time_to'] = 0;
             w2c_obj['config']['theme']['background-color'] ='#d50000'    
             loadApp();
-        }else{
-            w2c_obj['config'] = {"js_url": "/static/web2call/web2call.min.9a0d8750750a.js",
-            // адрес сокет сервера
-            "ws_serv": "https://tools.alltel24.ru:8001/web2call",
-            // ссылка на стили
-            "css_url": "/static/web2call/web2call.min.c6695cba3932.css",
-            // id номера телефона у которого показать крутящийся телефон
-            "phone_div": "",
-            // время работы фирмы до x часов
-            "work_time_from": 25,
-            // ссылка на крутящийся телефон
-            "icon": "https://tools.alltel24.ru/static/web2call/phone.320ff4377a0d.png",
-            // ссылка на картинку в загаловке окна
-            "title_icon": "https://tools.alltel24.ru/static/web2call/cons.e9c6c25f64af.png",
-            // время на сайте в секундах
-            "time_in_site": 3,
-            // адрес сервера статики
-            "static_serv": "https://tools.alltel24.ru",
-            // время работы фирмы после x часов
-            "work_time_to": 0,
-            // тема
-            "theme": {"color": "white", "background-color": "#d50000"},
-            //открытый ключ для работы reCAPTCHA
-            "recaptcha_key": "6LdM9AMTAAAAAAT6OcVO1CaCAVj6vA1w6hBuvbB_",
-            // отображает или скрывает вывод cLog в консоли
-            "debug": true}
-            loadApp();
         }
     });
 
