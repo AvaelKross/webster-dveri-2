@@ -336,7 +336,7 @@ input:focus, .button:focus, a:focus, select:focus, option:focus { outline: none;
         }
         .manager {
       border-radius: 100px;
-      left: 745px;
+      left: 725px;
       position: absolute;
       top: 134px;
       z-index: 200006;
@@ -408,12 +408,12 @@ input:focus, .button:focus, a:focus, select:focus, option:focus { outline: none;
         }
     
     .form_2calls_manager_text{
-        left: 700px;
-    line-height: 15px !important;
-    padding: 0 20px 0 0;
-    position: absolute;
-    top: 236px;
-    width: 200px;
+        left: 680px;
+        line-height: 15px !important;
+        padding: 0 20px 0 0;
+        position: absolute;
+        top: 236px;
+        width: 200px;
     }
         .form_2calls_manager_name{
             color: #fff;
@@ -462,7 +462,7 @@ input:focus, .button:focus, a:focus, select:focus, option:focus { outline: none;
 #twostep {
   position: absolute;
   bottom: 90px;
-  color: white;
+  color: black;
   left: 43px;
 }
 
