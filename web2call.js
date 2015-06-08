@@ -184,8 +184,8 @@ Web2Call.prototype.makeMainWindow = function () {
     '<div class="form_2calls_layout">' +
       '<div class="form_2calls_block">' +
         '<div class="form_2calls_arrow"></div>' +
-        '<div class="form_2calls_heading">Закажите <br>обратный звонок</div> '+
-        '<div class="form_2calls_desc">Наш менеджер позвонит Вам сразу, как только Вы оставите нам номер.</div>'+
+        '<div class="form_2calls_heading">Хотите мы Вам перезвоним <br>через 48 секунд?</div> '+
+        '<div class="form_2calls_desc">Ровно через 48 секунд мы ответим на все ваши вопросы</div>'+
         '<div id="form_2calls_myFormId">'+
           ' <div class="onestep">'  +
           '<form>'+
@@ -193,9 +193,9 @@ Web2Call.prototype.makeMainWindow = function () {
               '<input type="text" class="form_2calls_input clientNum" placeholder="8-(___)-___-__-__" tabindex="0">'+
             '</div>'+
             '<div class="form_2calls_b-button">'+
-              '<button id="w2cel_callBtn" class="form_2calls_button disabled">Введите капчу</button>'+
+              '<button id="w2cel_callBtn" class="form_2calls_button disabled">ОТПРАВИТЬ</button>'+
             '</div>'+
-            '<div id="w2c_recaptcha"></div>'+
+            //'<div id="w2c_recaptcha"></div>'+
           '</form>'+
           '</div>'+
           '<div id="twostep">'  +
@@ -208,10 +208,10 @@ Web2Call.prototype.makeMainWindow = function () {
           '</div>' +
           '<div class="manager">'+
             '<div class="manager_shadow"></div>'+
-            '<img src="images/manager-face.jpg" class="form_2calls_manager_img" alt="">'+
+            '<img src="images/manager-face2.jpg" class="form_2calls_manager_img" alt="">'+
           '</div>'+
           '<div class="form_2calls_manager_text">'+
-            '<div class="form_2calls_manager_name">Джанго Освобождённый</div>'+
+            '<div class="form_2calls_manager_name">Нафиса Шадмондова</div>'+
             '<div class="form_2calls_manager_desc">Менеджер</div>'+
           '</div>'+
         '</div>'+
