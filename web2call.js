@@ -35,6 +35,9 @@ var Web2Call = function (w2c_obj) {
     this.pSB = '.w2c_sb'; 
     //id дом уговлого окошка сервиса
     this.idSH = 'w2cel_showServiceHint';
+    
+    this.recapcha_id = 'none';
+
     // устанавливаем соединение с сокет сервером
     this.initWebSocket();
 
@@ -195,7 +198,7 @@ Web2Call.prototype.makeMainWindow = function () {
             '<div class="form_2calls_b-button">'+
               '<button id="w2cel_callBtn" class="form_2calls_button disabled">ОТПРАВИТЬ</button>'+
             '</div>'+
-            //'<div id="w2c_recaptcha"></div>'+
+            '<div id="w2c_recaptcha"></div>'+
           '</form>'+
           '</div>'+
           '<div id="twostep">'  +

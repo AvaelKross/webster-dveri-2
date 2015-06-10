@@ -479,13 +479,13 @@ input:focus, .button:focus, a:focus, select:focus, option:focus { outline: none;
 
 #w2c_recaptcha {
   position: absolute;
-  left: 259px;
-  bottom: 76px;
-  -webkit-transform: scale(0.77);
-  -moz-transform: scale(0.77);
-  -ms-transform: scale(0.77);
-  -o-transform: scale(0.77);
-  transform: scale(0.77);
+  left: 271px;
+  bottom: 72px;
+  -webkit-transform: scale(0.66);
+  -moz-transform: scale(0.66);
+  -ms-transform: scale(0.66);
+  -o-transform: scale(0.66);
+  transform: scale(0.66);
 
   -webkit-transform-origin: 0 0;
   -moz-transform-origin: 0 0;
