@@ -124,7 +124,7 @@ Web2Call.prototype.intelligentShow = function() {
 Web2Call.prototype.reCAPTCHAverifyCallback = function(response) {
     w2cMain.cLog(response);
     w2cMain.captcha_verify_key = response;
-    w2c_jQuery('#w2cel_callBtn').removeClass('disabled').text('Заказать звонок');
+    w2c_jQuery('#w2cel_callBtn').removeClass('disabled').text('Отправить');
 };
 
 // показываем сервисное окно, по клику на которое открывается главное окно
@@ -161,7 +161,7 @@ Web2Call.prototype.makeMainWindow = function () {
             '     <form>'  +
             '         <label for="w2c_clientNum">Ваш номер :</label><input type="text" class="clientNum" id="w2c_clientNum" placeholder="8-(___)-___-__-__" tabindex="0">'  +
             //'         <!--<p>Вы готовы принять звонок? Тогда нажмите кнопку ниже!</p>-->'  + 
-            //'         <!--<a class="btn btn-success" id="w2cel_callBtn" style="display: inline-block; padding: 6px 12px; margin-bottom: 0px; font-size: 14px; font-weight: 400; line-height: 1.42857143; text-align: center; white-space: nowrap; vertical-align: middle; cursor: pointer; -webkit-user-select: none; border: 1px solid rgb(76, 174, 76); border-radius: 4px; color: rgb(255, 255, 255); background-image: none; background-color: rgb(92, 184, 92);">Заказать звонок</a>-->'  +
+            //'         <!--<a class="btn btn-success" id="w2cel_callBtn" style="display: inline-block; padding: 6px 12px; margin-bottom: 0px; font-size: 14px; font-weight: 400; line-height: 1.42857143; text-align: center; white-space: nowrap; vertical-align: middle; cursor: pointer; -webkit-user-select: none; border: 1px solid rgb(76, 174, 76); border-radius: 4px; color: rgb(255, 255, 255); background-image: none; background-color: rgb(92, 184, 92);">Отправить</a>-->'  +
             '<div id="w2c_recaptcha"></div>'+
             '         <a class="btn btn-success btn-lg disabled" id="w2cel_callBtn">Введите капчу</a>'  +
             '     '  +
@@ -293,7 +293,7 @@ Web2Call.prototype.makeMainWindow = function () {
         if(this.captcha_required){
             w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Введите капчу');
         } else {
-            w2c_jQuery('#w2cel_callBtn').removeClass('disabled').text('Заказать звонок');
+            w2c_jQuery('#w2cel_callBtn').removeClass('disabled').text('Отправить');
         }
         // w2c_jQuery('#' + w2cMain.idSW + ' .onestep').animate({'margin-top':'0px'},1500, function () {w2c_jQuery('#' + w2cMain.idSW + ' #callState').text('Соденинение...');});
     });
@@ -336,7 +336,7 @@ Web2Call.prototype.makeMainWindow = function () {
     if(this.captcha_required){
         w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Введите капчу');
     } else {
-        w2c_jQuery('#w2cel_callBtn').removeClass('disabled').text('Заказать звонок');
+        w2c_jQuery('#w2cel_callBtn').removeClass('disabled').text('Отправить');
     }
 };
 
@@ -436,7 +436,7 @@ Web2Call.prototype.initWebSocket = function () {
             if(this.captcha_required){
                 w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Введите капчу');
             } else {
-                w2c_jQuery('#w2cel_callBtn').removeClass('disabled').text('Заказать звонок');
+                w2c_jQuery('#w2cel_callBtn').removeClass('disabled').text('Отправить');
             }
             w2cMain.captcha_required = json.data.captcha_required;
             break;
@@ -461,7 +461,7 @@ Web2Call.prototype.initWebSocket = function () {
             if(this.captcha_required){
                 w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Введите капчу');
             } else {
-                w2c_jQuery('#w2cel_callBtn').removeClass('disabled').text('Заказать звонок');
+                w2c_jQuery('#w2cel_callBtn').removeClass('disabled').text('Отправить');
             }
             break;
         // звонок прекращен
