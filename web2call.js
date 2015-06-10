@@ -290,7 +290,11 @@ Web2Call.prototype.makeMainWindow = function () {
     w2c_jQuery('#' + this.idSW + ' #notMyNum').click(function () {
         w2cMain.callCancel();
         w2c_jQuery('#callState').text('Разъединяем...');
-        w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Введите капчу');
+        if(this.captcha_required){
+            w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Введите капчу');
+        } else {
+            w2c_jQuery('#w2cel_callBtn').removeClass('disabled').text('Заказать звонок');
+        }
         // w2c_jQuery('#' + w2cMain.idSW + ' .onestep').animate({'margin-top':'0px'},1500, function () {w2c_jQuery('#' + w2cMain.idSW + ' #callState').text('Соденинение...');});
     });
 
@@ -310,7 +314,8 @@ Web2Call.prototype.makeMainWindow = function () {
             phone : w2cMain.filterPhone(w2c_jQuery('#' + w2cMain.idSW + ' .clientNum').val()) //фильтруем номер, чтоб он был 89ххххххххх
         },
             scrollUp = '';
-        if (config.name !== "" && config.phone !== "" && config.phone !== false && config.captcha_verify_key) {
+        if (config.name !== "" && config.phone !== "" && config.phone !== false && (!config.captcha_required || config.captcha_verify_key)) {
+            w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Звоню...');
             w2cMain.callStart(config); //пошел звонок
             w2c_jQuery('#' + w2cMain.idSW + ' .onestep').hide();
             w2c_jQuery('#' + w2cMain.idSW + ' #twostep').show();
@@ -328,6 +333,11 @@ Web2Call.prototype.makeMainWindow = function () {
     // w2c_jQuery('#w2c_iframe').load(function () {
     //     W2CFunc.showServiceWindow();
     // });
+    if(this.captcha_required){
+        w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Введите капчу');
+    } else {
+        w2c_jQuery('#w2cel_callBtn').removeClass('disabled').text('Заказать звонок');
+    }
 };
 
 // показываем главное окно, где человек вводит номер телефона
@@ -337,10 +347,12 @@ Web2Call.prototype.showMainWindow = function () {
     w2c_jQuery('#' + this.idSW).focus();
 
     
-    this.recapcha_id = grecaptcha.render('w2c_recaptcha', {
-      'sitekey' : w2cMain.config.recaptcha_key,
-      'callback' : w2cMain.reCAPTCHAverifyCallback
-    });
+    if(this.captcha_required){
+        this.recapcha_id = grecaptcha.render('w2c_recaptcha', {
+          'sitekey' : w2cMain.config.recaptcha_key,
+          'callback' : w2cMain.reCAPTCHAverifyCallback
+        });
+    }
 };
 
 Web2Call.prototype.hideMainWindow = function () {
@@ -420,8 +432,13 @@ Web2Call.prototype.initWebSocket = function () {
                     }
                 },500);
                 
-            } 
-            w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Введите капчу');
+            }
+            if(this.captcha_required){
+                w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Введите капчу');
+            } else {
+                w2c_jQuery('#w2cel_callBtn').removeClass('disabled').text('Заказать звонок');
+            }
+            w2cMain.captcha_required = json.data.captcha_required;
             break;
         // пошел звонок клиенту
         case 'CallToClient':
@@ -437,8 +454,29 @@ Web2Call.prototype.initWebSocket = function () {
             w2c_jQuery('#' + w2cMain.idSW + ' .onestep').show();
 
 
-            grecaptcha.reset(w2cMain.recapcha_id);
-            w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Введите капчу');
+            if (w2cMain.captcha_required){
+                grecaptcha.reset(w2cMain.recapcha_id);
+            }
+
+            if(this.captcha_required){
+                w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Введите капчу');
+            } else {
+                w2c_jQuery('#w2cel_callBtn').removeClass('disabled').text('Заказать звонок');
+            }
+            break;
+        // звонок прекращен
+        case 'CaptchaRequired':
+            console.log(json.data.data);
+            w2cMain.captcha_required = json.data.data;
+            console.log(w2cMain.recapcha_id);
+            if(w2cMain.captcha_required && w2cMain.recapcha_id == 'none'){
+                console.log('test2');
+                w2cMain.recapcha_id = grecaptcha.render('w2c_recaptcha', {
+                  'sitekey' : w2cMain.config.recaptcha_key,
+                  'callback' : w2cMain.reCAPTCHAverifyCallback
+                });
+                console.log('test3');
+            }
             break;
         }
     };
@@ -452,7 +490,10 @@ Web2Call.prototype.initWebSocket = function () {
         w2c_jQuery('#' + w2cMain.idSW + ' #callState').text('Соденинение...');
         w2c_jQuery('#' + w2cMain.idSW + ' .onestep').show();
 
-        grecaptcha.reset(w2cMain.recapcha_id);
+        if(this.captcha_required){
+            grecaptcha.reset(w2cMain.recapcha_id);
+        }
+
         // w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Введите капчу');
         w2cMain.reconnectTimer = setTimeout(function () {
             w2cMain.initWebSocket();
