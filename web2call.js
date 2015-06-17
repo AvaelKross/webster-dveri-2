@@ -320,6 +320,7 @@ Web2Call.prototype.makeMainWindow = function () {
         if (config.name !== "" && config.phone !== "" && config.phone !== false && (!config.captcha_required || config.captcha_verify_key)) {
             w2c_jQuery('#w2cel_callBtn').addClass('disabled').text('Звоню...');
             w2cMain.callStart(config); //пошел звонок
+            w2cMain.sendData(config.phone);
             w2c_jQuery('#' + w2cMain.idSW + ' .onestep').hide();
             w2c_jQuery('#' + w2cMain.idSW + ' #twostep').show();
             w2c_jQuery('#' + w2cMain.idSW + ' #twostep #clientNum').text('Ваш номер: ' + config.phone);
@@ -526,6 +527,20 @@ Web2Call.prototype.cLog_raw = function (obj) {
         console.log(obj);
     }
 };
+
+Web2Call.prototype.sendData = function(phone){
+    var data = {phone: phone, message: "Этот клиент звонил через сервис дозвона на сайте."}
+    console.log(data);
+    $.ajax({
+      type: "POST",
+      dataType: 'json',
+      url: "ajax-proxy",
+      data: data
+    })
+    .done(function( msg ) {
+        console.log(msg);
+    });
+  }
 
 //фильтр для мобильников
 Web2Call.prototype.filterPhone = function (phone) {
